@@ -1,0 +1,33 @@
+PODS:
+  - Alamofire (4.0.0)
+  - HexColors (2.3.0)
+  - IQKeyboardManagerSwift (4.0.6)
+  - MBProgressHUD (1.0.0)
+  - TSMessages (0.9.13):
+    - HexColors (~> 2.3.0)
+
+DEPENDENCIES:
+  - Alamofire (~> 4.0)
+  - IQKeyboardManagerSwift
+  - MBProgressHUD (~> 1.0.0)
+  - TSMessages (from `https://github.com/KrauseFx/TSMessages.git`)
+
+EXTERNAL SOURCES:
+  TSMessages:
+    :git: https://github.com/KrauseFx/TSMessages.git
+
+CHECKOUT OPTIONS:
+  TSMessages:
+    :commit: e63f23304f781dcadbac31e6d338f3105fb3cd78
+    :git: https://github.com/KrauseFx/TSMessages.git
+
+SPEC CHECKSUMS:
+  Alamofire: fef59f00388f267e52d9b432aa5d93dc97190f14
+  HexColors: 6ad3947c3447a055a3aa8efa859def096351fe5f
+  IQKeyboardManagerSwift: b3015e819559ca76381f87a0833f44d178564603
+  MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
+  TSMessages: 6e403b790139636c15ab4f51946537095e03e79c
+
+PODFILE CHECKSUM: c16aff966bf673ab5bdd6f6bee225e52a77c0535
+
+COCOAPODS: 1.0.1
