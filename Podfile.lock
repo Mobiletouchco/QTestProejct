@@ -3,6 +3,7 @@ PODS:
   - HexColors (2.3.0)
   - IQKeyboardManagerSwift (4.0.6)
   - MBProgressHUD (1.0.0)
+  - MFSideMenu (0.5.5)
   - TSMessages (0.9.13):
     - HexColors (~> 2.3.0)
 
@@ -10,6 +11,7 @@ DEPENDENCIES:
   - Alamofire (~> 4.0)
   - IQKeyboardManagerSwift
   - MBProgressHUD (~> 1.0.0)
+  - MFSideMenu
   - TSMessages (from `https://github.com/KrauseFx/TSMessages.git`)
 
 EXTERNAL SOURCES:
@@ -26,8 +28,9 @@ SPEC CHECKSUMS:
   HexColors: 6ad3947c3447a055a3aa8efa859def096351fe5f
   IQKeyboardManagerSwift: b3015e819559ca76381f87a0833f44d178564603
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
+  MFSideMenu: 268122e6894f2747fc3a2b48578100b232506c60
   TSMessages: 6e403b790139636c15ab4f51946537095e03e79c
 
-PODFILE CHECKSUM: c16aff966bf673ab5bdd6f6bee225e52a77c0535
+PODFILE CHECKSUM: a7a459c2261a33421c3036c5fc285a74f9902713
 
 COCOAPODS: 1.0.1

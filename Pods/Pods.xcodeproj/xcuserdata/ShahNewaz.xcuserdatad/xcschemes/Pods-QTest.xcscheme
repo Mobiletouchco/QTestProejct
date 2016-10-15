@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0800"
+   LastUpgradeVersion = "0700"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B9E75927A571410F650E11E8EA584F43"
+               BlueprintIdentifier = "0444EF8F3AB585AA3A6FDE8DF891FD76"
                BuildableName = "Pods_QTest.framework"
                BlueprintName = "Pods-QTest"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B9E75927A571410F650E11E8EA584F43"
+            BlueprintIdentifier = "0444EF8F3AB585AA3A6FDE8DF891FD76"
             BuildableName = "Pods_QTest.framework"
             BlueprintName = "Pods-QTest"
             ReferencedContainer = "container:Pods.xcodeproj">
@@ -60,15 +60,6 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B9E75927A571410F650E11E8EA584F43"
-            BuildableName = "Pods_QTest.framework"
-            BlueprintName = "Pods-QTest"
-            ReferencedContainer = "container:Pods.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

@@ -10,5 +10,5 @@ target 'QTest' do
 	pod 'IQKeyboardManagerSwift'
     pod 'MBProgressHUD', '~> 1.0.0'
     pod 'TSMessages', :git => 'https://github.com/KrauseFx/TSMessages.git'
-    
+    pod 'MFSideMenu'
 end

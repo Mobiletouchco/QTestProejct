@@ -7,9 +7,12 @@
 //
 
 import UIKit
+import MFSideMenu
 
 class WelcomeViewController: UIViewController {
 
+    private var container: MFSideMenuContainerViewController? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -24,7 +27,16 @@ class WelcomeViewController: UIViewController {
     func goBack() {
         _ = self.navigationController?.popToRootViewController(animated: true)
     }
-
+    func goForward() {
+        container = MFSideMenuContainerViewController.container(withCenter: storyboard?.instantiateViewController(withIdentifier: "QuestionViewController"), leftMenuViewController: nil, rightMenuViewController: MenuItemsViewController())
+        // disable panning on the side menus, only allow panning on the center view controller:
+//        menuContainerViewController.panMode = MFSideMenuPanModeCenterViewController
+        // disable all panning
+        container?.panMode = MFSideMenuPanModeNone
+        container?.navigationItem.hidesBackButton = true
+        container?.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Toggle", style: .plain, target: self, action: #selector(toggleSideMenu(sender:)))
+        self.navigationController?.pushViewController(container!, animated: true)
+    }
     /*
     // MARK: - Navigation
 
@@ -35,4 +47,9 @@ class WelcomeViewController: UIViewController {
     }
     */
 
+    func toggleSideMenu(sender: UIBarButtonItem) {
+        container?.toggleRightSideMenuCompletion({ 
+            
+        })
+    }
 }

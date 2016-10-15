@@ -10,6 +10,9 @@
 		312673CFF4564D191622AEB0 /* Pods_QTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7396D6313B1A58DE98A5B3F /* Pods_QTest.framework */; };
 		357DFEA41DB2397C00B1FC7B /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357DFEA31DB2397C00B1FC7B /* APIManager.swift */; };
 		35DFE8CC1DB28716006CDF3C /* QuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DFE8CB1DB28716006CDF3C /* QuestionViewController.swift */; };
+		35DFE8D01DB28AAD006CDF3C /* ENSideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DFE8CE1DB28AAD006CDF3C /* ENSideMenu.swift */; };
+		35DFE8D11DB28AAD006CDF3C /* ENSideMenuNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DFE8CF1DB28AAD006CDF3C /* ENSideMenuNavigationController.swift */; };
+		35DFE8D31DB28BB9006CDF3C /* MenuItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DFE8D21DB28BB9006CDF3C /* MenuItemsViewController.swift */; };
 		35E07C431DAE4B4B0083173C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E07C421DAE4B4B0083173C /* AppDelegate.swift */; };
 		35E07C481DAE4B4B0083173C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35E07C461DAE4B4B0083173C /* Main.storyboard */; };
 		35E07C4A1DAE4B4B0083173C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 35E07C491DAE4B4B0083173C /* Assets.xcassets */; };
@@ -23,6 +26,9 @@
 /* Begin PBXFileReference section */
 		357DFEA31DB2397C00B1FC7B /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		35DFE8CB1DB28716006CDF3C /* QuestionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionViewController.swift; sourceTree = "<group>"; };
+		35DFE8CE1DB28AAD006CDF3C /* ENSideMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ENSideMenu.swift; sourceTree = "<group>"; };
+		35DFE8CF1DB28AAD006CDF3C /* ENSideMenuNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ENSideMenuNavigationController.swift; sourceTree = "<group>"; };
+		35DFE8D21DB28BB9006CDF3C /* MenuItemsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuItemsViewController.swift; sourceTree = "<group>"; };
 		35E07C3F1DAE4B4B0083173C /* QTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		35E07C421DAE4B4B0083173C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		35E07C471DAE4B4B0083173C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -50,6 +56,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		35DFE8CD1DB28AAD006CDF3C /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				35DFE8CE1DB28AAD006CDF3C /* ENSideMenu.swift */,
+				35DFE8CF1DB28AAD006CDF3C /* ENSideMenuNavigationController.swift */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
 		35E07C361DAE4B4B0083173C = {
 			isa = PBXGroup;
 			children = (
@@ -82,6 +97,7 @@
 				706A6D251DAF9AAB00344FF2 /* WelcomeViewController.swift */,
 				357DFEA31DB2397C00B1FC7B /* APIManager.swift */,
 				35DFE8CB1DB28716006CDF3C /* QuestionViewController.swift */,
+				35DFE8D21DB28BB9006CDF3C /* MenuItemsViewController.swift */,
 			);
 			path = QTest;
 			sourceTree = "<group>";
@@ -98,6 +114,7 @@
 		CD715123366C2795AA78BC02 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				35DFE8CD1DB28AAD006CDF3C /* Library */,
 				C7396D6313B1A58DE98A5B3F /* Pods_QTest.framework */,
 			);
 			name = Frameworks;
@@ -228,11 +245,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				35DFE8D01DB28AAD006CDF3C /* ENSideMenu.swift in Sources */,
 				357DFEA41DB2397C00B1FC7B /* APIManager.swift in Sources */,
+				35DFE8D31DB28BB9006CDF3C /* MenuItemsViewController.swift in Sources */,
 				706A6D221DAF7DC800344FF2 /* UIView+XibConfiguration.swift in Sources */,
 				35DFE8CC1DB28716006CDF3C /* QuestionViewController.swift in Sources */,
 				706A6D261DAF9AAB00344FF2 /* WelcomeViewController.swift in Sources */,
 				706A6D201DAF7C8500344FF2 /* LoginViewController.swift in Sources */,
+				35DFE8D11DB28AAD006CDF3C /* ENSideMenuNavigationController.swift in Sources */,
 				35E07C431DAE4B4B0083173C /* AppDelegate.swift in Sources */,
 				706A6D241DAF905300344FF2 /* RegisterViewController.swift in Sources */,
 			);
