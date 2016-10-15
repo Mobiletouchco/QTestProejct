@@ -8,12 +8,22 @@
 
 import UIKit
 
-class RegisterViewController: UIViewController {
+class RegisterViewController: UIViewController, UITextFieldDelegate {
+    
+    @IBOutlet weak var nameFld: UITextField!
+    @IBOutlet weak var userNameFld: UITextField!
+    @IBOutlet weak var passwordFld: UITextField!
+    @IBOutlet weak var emailFld: UITextField!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        nameFld.text = "Shah Newaz"
+        userNameFld.text = "shah"
+        passwordFld.text = "123456"
+        emailFld.text = "s1@s.com"
     }
 
     override func didReceiveMemoryWarning() {
@@ -26,7 +36,22 @@ class RegisterViewController: UIViewController {
     }
 
     func goForward() {
-        self.performSegue(withIdentifier: String(describing: WelcomeViewController.self), sender: nil)
+        let param: [String: Any] = [
+            "device_id": UIDevice.current.identifierForVendor!.uuidString,
+            "device_type": 1 as NSNumber,
+            "email": emailFld.text,
+            "password": passwordFld.text,
+            "user_name": userNameFld.text,
+            "first_name": nameFld.text
+        ]
+        
+        APIManager.sharedInstance.executePostRequest(urlString: "registration", parameters: param, Success: { (response) in
+            
+            }) { (error) in
+                
+        }
+        
+//        self.performSegue(withIdentifier: String(describing: WelcomeViewController.self), sender: nil)
     }
     /*
     // MARK: - Navigation
@@ -38,4 +63,23 @@ class RegisterViewController: UIViewController {
     }
     */
 
+    
+    // MARK: - UITextFieldDelegate
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if (textField == nameFld) {
+            userNameFld.becomeFirstResponder()
+        }
+        else if (textField == userNameFld) {
+            passwordFld.becomeFirstResponder()
+        }
+        else if (textField == passwordFld) {
+            emailFld.becomeFirstResponder()
+        }
+        else if (textField == emailFld) {
+            textField.resignFirstResponder()
+//            goForward()
+        }
+        return true
+    }
+    
 }

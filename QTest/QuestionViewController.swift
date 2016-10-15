@@ -1,14 +1,14 @@
 //
-//  WelcomeViewController.swift
+//  QuestionViewController.swift
 //  QTest
 //
-//  Created by TM Mac 01 on 10/13/16.
+//  Created by Shah Newaz Hossain on 10/15/16.
 //  Copyright © 2016 Shah Newaz Hossain. All rights reserved.
 //
 
 import UIKit
 
-class WelcomeViewController: UIViewController {
+class QuestionViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,9 +21,6 @@ class WelcomeViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func goBack() {
-        _ = self.navigationController?.popToRootViewController(animated: true)
-    }
 
     /*
     // MARK: - Navigation
