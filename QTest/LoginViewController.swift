@@ -28,6 +28,7 @@ class LoginViewController: UIViewController {
     }
     
     func goForward() {
+        view.endEditing(true)
         if userNameFld.text?.isEmpty == true || passwordFld.text?.isEmpty == true {
             TSMessage.showNotification(withTitle: "Required field should not be empty.", type: .error)
             return
@@ -48,7 +49,8 @@ class LoginViewController: UIViewController {
             
         }) { (error) in
             TSMessage.showNotification(withTitle: error, type: .error)
-        }    }
+        }
+    }
 
     /*
     // MARK: - Navigation
