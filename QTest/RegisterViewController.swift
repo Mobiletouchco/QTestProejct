@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import TSMessages
 
 class RegisterViewController: UIViewController, UITextFieldDelegate {
     
@@ -14,6 +15,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var userNameFld: UITextField!
     @IBOutlet weak var passwordFld: UITextField!
     @IBOutlet weak var emailFld: UITextField!
+    @IBOutlet weak var numberFld: UITextField!
     
 
     override func viewDidLoad() {
@@ -36,22 +38,38 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     }
 
     func goForward() {
+        if nameFld.text?.isEmpty == true || userNameFld.text?.isEmpty == true || passwordFld.text?.isEmpty == true || emailFld.text?.isEmpty == true || numberFld.text?.isEmpty == true {
+            TSMessage.showNotification(withTitle: "Required field should not be empty.", type: .error)
+            return
+        }
+        guard (passwordFld.text?.characters.count)! > 5 else {
+            TSMessage.showNotification(withTitle: "Password should be minimum 6 characters.", type: .error)
+            return
+        }
+        guard UserObject.sharedUser.isValidEmail(testStr: emailFld.text!) else {
+            TSMessage.showNotification(withTitle: "Email address is not valid.", type: .error)
+            return
+        }
+        
+        
         let param: [String: Any] = [
             "device_id": UIDevice.current.identifierForVendor!.uuidString,
             "device_type": 1 as NSNumber,
             "email": emailFld.text,
             "password": passwordFld.text,
             "user_name": userNameFld.text,
-            "first_name": nameFld.text
+            "first_name": nameFld.text,
+            "contact_number": numberFld.text
         ]
         
         APIManager.sharedInstance.executePostRequest(urlString: "registration", parameters: param, Success: { (response) in
-            
+            UserObject.sharedUser.saveUserToLocal(info: response.value(forKey: "results") as! NSDictionary)
+            self.performSegue(withIdentifier: String(describing: WelcomeViewController.self), sender: nil)
+
             }) { (error) in
-                
+                TSMessage.showNotification(withTitle: error, type: .error)
         }
         
-//        self.performSegue(withIdentifier: String(describing: WelcomeViewController.self), sender: nil)
     }
     /*
     // MARK: - Navigation
@@ -76,8 +94,11 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
             emailFld.becomeFirstResponder()
         }
         else if (textField == emailFld) {
-            textField.resignFirstResponder()
+            numberFld.becomeFirstResponder()
 //            goForward()
+        }
+        else {
+            textField.resignFirstResponder()
         }
         return true
     }

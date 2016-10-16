@@ -11,12 +11,11 @@ import Alamofire
 import MBProgressHUD
 import TSMessages
 
-let appDelegate = UIApplication.shared.delegate as! AppDelegate
 private let BaseUrl: String = "http://aujamtanmeyah.org.sa/qtest/"
 private let SecurityCode: String = "api#100#qtest*786!#102"
 
 typealias SuccessCompletionHandler = (_ response: AnyObject) -> Void
-typealias FailureCompletionHandler = (_ error: Error) -> Void
+typealias FailureCompletionHandler = (_ error: String) -> Void
 
 class APIManager: NSObject {
     
@@ -34,47 +33,20 @@ class APIManager: NSObject {
             guard response.result.isSuccess else {
                 let error = response.result.error! as Error
                 hud.hide(animated: true)
-                Failure(error)
+                Failure(error.localizedDescription)
                 print("Failure \(urlString) :\(response.response?.statusCode) \(error.localizedDescription)")
-                TSMessage.showNotification(withTitle: error.localizedDescription, type: .error)
                 return
             }
-//
-            print("Success \(urlString) : \(response.result.value)")
             hud.hide(animated: true)
-            Success(response.result.value! as AnyObject)
-
-            
-//            switch response.result {
-//            case .success:
-//                print("Success \(urlString) : \(response.result.value)")
-//                hud.hide(animated: true)
-//                Success(response.result.value! as AnyObject)
-//                break
-//            case .failure(let error):
-//                hud.hide(animated: true)
-//                Failure(error)
-//                print("Failure \(urlString) : \(error.localizedDescription)")
-//                TSMessage.showNotification(withTitle: error.localizedDescription, type: .error)
-//
-//                break
-//            }
-//            guard response.error==nil else {
-//                let error = response.error!
-//                hud.hide(animated: true)
-//                Failure(error)
-//                print("Failure \(urlString) : \(error.localizedDescription)")
-//                TSMessage.showNotification(withTitle: error.localizedDescription, type: .error)
-//                return
-//            }
-            
-//            let json = try? JSONSerialization.jsonObject(with: response.result.value!, options: .allowFragments)
-//            print("Success \(urlString) : \(json)")
-//            if let data = response.result.value, let utf8Text = String(data: data, encoding: .utf8) {
-//
-//                print("Data: \(utf8Text)")
-//                hud.hide(animated: true)
-//            }
+            let responseObject = response.result.value as! NSDictionary
+            print("Success \(urlString) : \(responseObject)")
+            let success = responseObject.value(forKey: "success") as! NSNumber
+            if (success.boolValue) {
+                Success(responseObject)
+            }
+            else {
+                Failure(responseObject.value(forKey: "msg") as! String)
+            }
         }
     }
     

@@ -21,6 +21,8 @@
 		706A6D221DAF7DC800344FF2 /* UIView+XibConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706A6D211DAF7DC800344FF2 /* UIView+XibConfiguration.swift */; };
 		706A6D241DAF905300344FF2 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706A6D231DAF905300344FF2 /* RegisterViewController.swift */; };
 		706A6D261DAF9AAB00344FF2 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706A6D251DAF9AAB00344FF2 /* WelcomeViewController.swift */; };
+		B09F8EBC1DB3673200777D88 /* UserObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09F8EBA1DB3673200777D88 /* UserObject.swift */; };
+		B09F8EBD1DB3673200777D88 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09F8EBB1DB3673200777D88 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +43,8 @@
 		706A6D211DAF7DC800344FF2 /* UIView+XibConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+XibConfiguration.swift"; sourceTree = "<group>"; };
 		706A6D231DAF905300344FF2 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		706A6D251DAF9AAB00344FF2 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		B09F8EBA1DB3673200777D88 /* UserObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserObject.swift; sourceTree = "<group>"; };
+		B09F8EBB1DB3673200777D88 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C7396D6313B1A58DE98A5B3F /* Pods_QTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -86,6 +90,8 @@
 		35E07C411DAE4B4B0083173C /* QTest */ = {
 			isa = PBXGroup;
 			children = (
+				B09F8EBA1DB3673200777D88 /* UserObject.swift */,
+				B09F8EBB1DB3673200777D88 /* Constants.swift */,
 				706A6D211DAF7DC800344FF2 /* UIView+XibConfiguration.swift */,
 				35E07C421DAE4B4B0083173C /* AppDelegate.swift */,
 				35E07C461DAE4B4B0083173C /* Main.storyboard */,
@@ -246,6 +252,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				35DFE8D01DB28AAD006CDF3C /* ENSideMenu.swift in Sources */,
+				B09F8EBC1DB3673200777D88 /* UserObject.swift in Sources */,
 				357DFEA41DB2397C00B1FC7B /* APIManager.swift in Sources */,
 				35DFE8D31DB28BB9006CDF3C /* MenuItemsViewController.swift in Sources */,
 				706A6D221DAF7DC800344FF2 /* UIView+XibConfiguration.swift in Sources */,
@@ -255,6 +262,7 @@
 				35DFE8D11DB28AAD006CDF3C /* ENSideMenuNavigationController.swift in Sources */,
 				35E07C431DAE4B4B0083173C /* AppDelegate.swift in Sources */,
 				706A6D241DAF905300344FF2 /* RegisterViewController.swift in Sources */,
+				B09F8EBD1DB3673200777D88 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
