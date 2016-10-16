@@ -8,14 +8,14 @@
 
 import UIKit
 
-class UserObject: NSObject {
+class UserObject: NSObject, NSCoding {
     
     var userId: String = ""
     var userName: String = ""
     var firstName: String = ""
-    var testTakenCount: NSNumber = 0
+    var testTakenCount: String = "0"
     var email: String = ""
-    var contactNumber: String?
+    var contactNumber: String = ""
 
     static let sharedUser : UserObject = {
         let instance = UserObject()
@@ -23,23 +23,47 @@ class UserObject: NSObject {
     }()
     
     
+    
     convenience init(_ dictionary: NSDictionary) {
         self.init()
-        userId = ((dictionary["user_id"] as AnyObject).stringValue)!
+        guard dictionary.allKeys.count>0 else {
+            return
+        }
+        userId = dictionary["user_id"] as! String
         userName = dictionary["user_name"] as! String
-        testTakenCount = dictionary["test_taken_count"] as! NSNumber
+        testTakenCount = dictionary["test_taken_count"] as! String
         firstName = dictionary["first_name"] as! String
         email = dictionary["email"] as! String
         if let contact_number = dictionary["contact_number"] as? String {
             contactNumber = contact_number
         }
+        
     }
     
+    
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(userId, forKey: "user_id")
+        aCoder.encode(userName, forKey: "user_name")
+        aCoder.encode(testTakenCount, forKey: "test_taken_count")
+        aCoder.encode(firstName, forKey: "first_name")
+        aCoder.encode(email, forKey: "email")
+        aCoder.encode(contactNumber, forKey: "contact_number")
+    }
+    
+    
+    
+    required convenience init(coder decoder: NSCoder) {
+        self.init()
+        userId = decoder.decodeObject(forKey: "user_id") as! String
+        userName = decoder.decodeObject(forKey: "user_name") as! String
+        testTakenCount = decoder.decodeObject(forKey: "test_taken_count") as! String
+        firstName = decoder.decodeObject(forKey: "first_name") as! String
+        email = decoder.decodeObject(forKey: "email") as! String
+        contactNumber = decoder.decodeObject(forKey: "contact_number") as! String
+    }
+    
+    
     func saveUserToLocal(info: NSDictionary) {
-        USERDEFAULTS.set(info, forKey: kStringSavedUserKey)
-        USERDEFAULTS.set(true, forKey: kStringLoginKey)
-        USERDEFAULTS.synchronize()
-        
         let user = UserObject.init(info)
         userId = user.userId
         userName = user.userName
@@ -47,8 +71,26 @@ class UserObject: NSObject {
         email = user.email
         contactNumber = user.contactNumber
         testTakenCount = user.testTakenCount
+
+        let encodedData = NSKeyedArchiver.archivedData(withRootObject: self)
+        USERDEFAULTS.set(encodedData, forKey: kStringSavedUserKey)
+        USERDEFAULTS.set(true, forKey: kStringLoginKey)
+        USERDEFAULTS.synchronize()
+        
     }
     
+    func retriveUserFromLocal() {
+        let data = USERDEFAULTS.value(forKey: kStringSavedUserKey) as! Data
+        let user = NSKeyedUnarchiver.unarchiveObject(with: data) as! UserObject
+        userId = user.userId
+        userName = user.userName
+        firstName = user.firstName
+        email = user.email
+        contactNumber = user.contactNumber
+        testTakenCount = user.testTakenCount
+
+    }
+
     
     func isValidEmail(testStr:String) -> Bool {
         print("validate emilId: \(testStr)")
@@ -66,27 +108,27 @@ class UserObject: NSObject {
 //    }
 }
 
-//class ChatRoom: NSObject {
-//    
-//    var userId: String = ""
-//    var roomId: String = ""
+class Question: NSObject {
+
+    var quesId: String = ""
+    var answer: Int?
 //    var name: String = ""
 //    var total_member_online: NSNumber = 0
 //    var isPrivate: Bool = false
 ////    var password: String = ""
 //
-//    convenience init(_ dictionary: NSDictionary) {
-//        self.init()
-//        roomId = dictionary["id"]!.stringValue
+    convenience init(_ dictionary: NSDictionary) {
+        self.init()
+        quesId = dictionary["id"] as! String
 //        userId = dictionary["user_id"]!.stringValue
 //        name = dictionary["name"] as! String
 //        total_member_online = dictionary["total_member_online"] as! NSNumber
-////        password = dictionary["password"] as! String
-////        room_type = dictionary["room_type"] as! String
+//        password = dictionary["password"] as! String
+//        room_type = dictionary["room_type"] as! String
 //        if dictionary["room_type"]!.isEqualToString("private") {
 //            isPrivate = true
 //        }
-//    }
-//    
-//}
+    }
+//
+}
 

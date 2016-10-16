@@ -15,7 +15,7 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="qtest_background" translatesAutoresizingMaskIntoConstraints="NO" id="eqj-B5-6AV"/>
@@ -259,7 +259,7 @@
                         <viewControllerLayoutGuide type="bottom" id="S3K-3k-AEY"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Tzs-ym-A5T">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="qtest_background" translatesAutoresizingMaskIntoConstraints="NO" id="Fhl-H3-pUG"/>
@@ -660,13 +660,13 @@
         <!--Welcome View Controller-->
         <scene sceneID="LDB-Ve-eJN">
             <objects>
-                <viewController id="W8f-We-ekD" customClass="WelcomeViewController" customModule="QTest" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WelcomeViewController" id="W8f-We-ekD" customClass="WelcomeViewController" customModule="QTest" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Y1m-PF-Khl"/>
                         <viewControllerLayoutGuide type="bottom" id="ZIG-yL-TwP"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="3lx-F3-zAI">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="qtest_background" translatesAutoresizingMaskIntoConstraints="NO" id="z0H-4n-khC"/>
@@ -802,6 +802,9 @@ RW50ZXIgVGVzdAA
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="NxZ-gh-YVq"/>
+                    <connections>
+                        <outlet property="fullNameLbl" destination="rif-iN-AJi" id="Cjk-HC-41F"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7JP-uc-pM7" sceneMemberID="firstResponder"/>
             </objects>
@@ -816,7 +819,7 @@ RW50ZXIgVGVzdAA
                         <viewControllerLayoutGuide type="bottom" id="ByP-Lr-wi2"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="vFn-gD-1ue">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="qtest_background" translatesAutoresizingMaskIntoConstraints="NO" id="buK-hg-WLC"/>
@@ -961,6 +964,6 @@ RW50ZXIgVGVzdAA
         <image name="qtest_background" width="768" height="1024"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="1un-Ax-t5j"/>
+        <segue reference="VsB-pr-2OS"/>
     </inferredMetricsTieBreakers>
 </document>

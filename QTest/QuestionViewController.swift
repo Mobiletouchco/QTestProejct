@@ -7,10 +7,13 @@
 //
 
 import UIKit
-
+import TSMessages
 
 class QuestionViewController: UIViewController {
 
+    private var index = 0
+    private var currentQues: Question?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Welcome to Qtest"
@@ -21,7 +24,7 @@ class QuestionViewController: UIViewController {
 //        view.bringSubview(toFront: nav.navigationBar)
 
 //        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Toggle", style: .plain, target: self, action: #selector(toggleSideMenu(sender:)))
-
+        requestForQuestion()
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,9 +43,27 @@ class QuestionViewController: UIViewController {
         self.navigationController?.isNavigationBarHidden = true
     }
     
-    func toggleSideMenu(sender: UIBarButtonItem) {
-//        toggleSideMenuView()
+    func requestForQuestion() {
+        let taken = 1 + (NumberFormatter().number(from: UserObject.sharedUser.userId)?.intValue)!
+        var param: [String: Any] = [
+            "user_id": UserObject.sharedUser.userId,
+            "off_set": index as NSNumber,
+            "qtest_try": NSNumber(value: taken)
+        ]
+        if currentQues != nil {
+            param["question_id"] = currentQues?.quesId
+            param["question_answer"] = NSNumber(value: (currentQues?.answer)!)
+        }
+        APIManager.sharedInstance.executePostRequest(urlString: "questionlist", parameters: param, Success: { (response) in
+//            UserObject.sharedUser.saveUserToLocal(info: response.value(forKey: "results") as! NSDictionary)
+//            self.performSegue(withIdentifier: String(describing: WelcomeViewController.self), sender: nil)
+            
+        }) { (error) in
+            TSMessage.showNotification(withTitle: error, type: .error)
+        }
     }
+    
+    
     
     /*
     // MARK: - Navigation
@@ -54,25 +75,5 @@ class QuestionViewController: UIViewController {
     }
     */
 
-    // MARK: - ENSideMenu Delegate
-    func sideMenuWillOpen() {
-        print("sideMenuWillOpen")
-    }
     
-    func sideMenuWillClose() {
-        print("sideMenuWillClose")
-    }
-    
-    func sideMenuShouldOpenSideMenu() -> Bool {
-        print("sideMenuShouldOpenSideMenu")
-        return true
-    }
-    
-    func sideMenuDidClose() {
-        print("sideMenuDidClose")
-    }
-    
-    func sideMenuDidOpen() {
-        print("sideMenuDidOpen")
-    }
 }

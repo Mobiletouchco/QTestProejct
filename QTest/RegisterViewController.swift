@@ -55,11 +55,11 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         let param: [String: Any] = [
             "device_id": UIDevice.current.identifierForVendor!.uuidString,
             "device_type": 1 as NSNumber,
-            "email": emailFld.text,
-            "password": passwordFld.text,
-            "user_name": userNameFld.text,
-            "first_name": nameFld.text,
-            "contact_number": numberFld.text
+            "email": emailFld.text!,
+            "password": passwordFld.text!,
+            "user_name": userNameFld.text!,
+            "first_name": nameFld.text!,
+            "contact_number": numberFld.text!
         ]
         
         APIManager.sharedInstance.executePostRequest(urlString: "registration", parameters: param, Success: { (response) in

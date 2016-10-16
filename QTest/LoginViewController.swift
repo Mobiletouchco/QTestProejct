@@ -19,7 +19,11 @@ class LoginViewController: UIViewController {
         // Do any additional setup after loading the view.
         userNameFld.text = "shah"
         passwordFld.text = "123456"
-
+        if USERDEFAULTS.bool(forKey: kStringLoginKey) {
+            UserObject.sharedUser.retriveUserFromLocal()
+            navigationController?.pushViewController((storyboard?.instantiateViewController(withIdentifier: "WelcomeViewController"))!, animated: false)
+//            self.performSegue(withIdentifier: String(describing: WelcomeViewController.self), sender: nil)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -39,8 +43,8 @@ class LoginViewController: UIViewController {
         }
         
         let param: [String: Any] = [
-            "password": passwordFld.text,
-            "user_name": userNameFld.text,
+            "password": passwordFld.text!,
+            "user_name": userNameFld.text!
         ]
         
         APIManager.sharedInstance.executePostRequest(urlString: "login", parameters: param, Success: { (response) in

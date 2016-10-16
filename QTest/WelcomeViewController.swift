@@ -11,12 +11,14 @@ import MFSideMenu
 
 class WelcomeViewController: UIViewController {
 
+    @IBOutlet weak var fullNameLbl: UILabel!
     private var container: MFSideMenuContainerViewController? = nil
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
+
+        fullNameLbl.text = UserObject.sharedUser.firstName
     }
 
     override func didReceiveMemoryWarning() {
