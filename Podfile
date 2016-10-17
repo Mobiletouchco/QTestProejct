@@ -11,4 +11,7 @@ target 'QTest' do
     pod 'MBProgressHUD', '~> 1.0.0'
     pod 'TSMessages', :git => 'https://github.com/KrauseFx/TSMessages.git'
     pod 'MFSideMenu'
+    pod 'SwiftCharts', :git => 'https://github.com/i-schuetz/SwiftCharts.git'
+    pod 'PNChart'
+
 end

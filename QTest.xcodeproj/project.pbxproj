@@ -23,6 +23,7 @@
 		706A6D261DAF9AAB00344FF2 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706A6D251DAF9AAB00344FF2 /* WelcomeViewController.swift */; };
 		B09F8EBC1DB3673200777D88 /* UserObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09F8EBA1DB3673200777D88 /* UserObject.swift */; };
 		B09F8EBD1DB3673200777D88 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09F8EBB1DB3673200777D88 /* Constants.swift */; };
+		B0ADF2451DB4DB92007C29F5 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ADF2441DB4DB92007C29F5 /* ResultViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +46,7 @@
 		706A6D251DAF9AAB00344FF2 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		B09F8EBA1DB3673200777D88 /* UserObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserObject.swift; sourceTree = "<group>"; };
 		B09F8EBB1DB3673200777D88 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		B0ADF2441DB4DB92007C29F5 /* ResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		C7396D6313B1A58DE98A5B3F /* Pods_QTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -104,6 +106,7 @@
 				357DFEA31DB2397C00B1FC7B /* APIManager.swift */,
 				35DFE8CB1DB28716006CDF3C /* QuestionViewController.swift */,
 				35DFE8D21DB28BB9006CDF3C /* MenuItemsViewController.swift */,
+				B0ADF2441DB4DB92007C29F5 /* ResultViewController.swift */,
 			);
 			path = QTest;
 			sourceTree = "<group>";
@@ -251,6 +254,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0ADF2451DB4DB92007C29F5 /* ResultViewController.swift in Sources */,
 				35DFE8D01DB28AAD006CDF3C /* ENSideMenu.swift in Sources */,
 				B09F8EBC1DB3673200777D88 /* UserObject.swift in Sources */,
 				357DFEA41DB2397C00B1FC7B /* APIManager.swift in Sources */,
@@ -306,6 +310,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -356,6 +361,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -385,6 +391,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 38FE706829B7820C1AD6D44D /* Pods-QTest.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 326AG7GXC8;
 				INFOPLIST_FILE = QTest/Info.plist;
@@ -399,6 +406,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6FB41ED38164D6766275CF09 /* Pods-QTest.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 326AG7GXC8;
 				INFOPLIST_FILE = QTest/Info.plist;

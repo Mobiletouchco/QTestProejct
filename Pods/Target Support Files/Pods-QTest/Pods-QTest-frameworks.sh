@@ -89,7 +89,10 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework"
   install_framework "$BUILT_PRODUCTS_DIR/MBProgressHUD/MBProgressHUD.framework"
   install_framework "$BUILT_PRODUCTS_DIR/MFSideMenu/MFSideMenu.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/PNChart/PNChart.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/SwiftCharts/SwiftCharts.framework"
   install_framework "$BUILT_PRODUCTS_DIR/TSMessages/TSMessages.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/UICountingLabel/UICountingLabel.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/Alamofire/Alamofire.framework"
@@ -97,5 +100,8 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework"
   install_framework "$BUILT_PRODUCTS_DIR/MBProgressHUD/MBProgressHUD.framework"
   install_framework "$BUILT_PRODUCTS_DIR/MFSideMenu/MFSideMenu.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/PNChart/PNChart.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/SwiftCharts/SwiftCharts.framework"
   install_framework "$BUILT_PRODUCTS_DIR/TSMessages/TSMessages.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/UICountingLabel/UICountingLabel.framework"
 fi

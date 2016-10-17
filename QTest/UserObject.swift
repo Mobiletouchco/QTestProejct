@@ -13,7 +13,7 @@ class UserObject: NSObject, NSCoding {
     var userId: String = ""
     var userName: String = ""
     var firstName: String = ""
-    var testTakenCount: String = "0"
+    var testTakenCount: String = ""
     var email: String = ""
     var contactNumber: String = ""
 
@@ -110,25 +110,33 @@ class UserObject: NSObject, NSCoding {
 
 class Question: NSObject {
 
-    var quesId: String = ""
+    var questionId: String = ""
     var answer: Int?
-//    var name: String = ""
-//    var total_member_online: NSNumber = 0
-//    var isPrivate: Bool = false
-////    var password: String = ""
-//
+    var questionText: String = ""
+
     convenience init(_ dictionary: NSDictionary) {
         self.init()
-        quesId = dictionary["id"] as! String
-//        userId = dictionary["user_id"]!.stringValue
-//        name = dictionary["name"] as! String
-//        total_member_online = dictionary["total_member_online"] as! NSNumber
-//        password = dictionary["password"] as! String
-//        room_type = dictionary["room_type"] as! String
-//        if dictionary["room_type"]!.isEqualToString("private") {
-//            isPrivate = true
-//        }
+        questionId = dictionary["question_id"] as! String
+        questionText = dictionary["question_text"] as! String
     }
-//
+
+}
+
+class Category: NSObject {
+    
+    var categoryId: String = ""
+    var categoryTitle: String = ""
+    var totalCorrectAnswers: NSNumber = 0
+    var totalQuestions: NSNumber = 0
+
+    convenience init(_ dictionary: NSDictionary) {
+        self.init()
+        categoryId = dictionary["category_id"] as! String
+        categoryTitle = dictionary["category_title"] as! String
+        totalCorrectAnswers = dictionary["total_correct_answers"] as! NSNumber
+        totalQuestions = dictionary["total_questions"] as! NSNumber
+
+    }
+    
 }
 
