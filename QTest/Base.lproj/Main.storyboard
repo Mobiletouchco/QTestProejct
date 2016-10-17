@@ -985,7 +985,7 @@ RW50ZXIgVGVzdAA
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="qtest_background" translatesAutoresizingMaskIntoConstraints="NO" id="Quu-Em-KxH"/>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ug5-5p-jUK" customClass="PNBarChart">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ug5-5p-jUK">
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B5H-MW-DKT">
@@ -1009,7 +1009,7 @@ RW50ZXIgVGVzdAA
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="barChart" destination="ug5-5p-jUK" id="1Rg-Qq-A5k"/>
+                        <outlet property="barChartView" destination="ug5-5p-jUK" id="3Tz-5R-wzB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tlE-7o-jdB" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -11,9 +11,12 @@ import TSMessages
 import SwiftCharts
 import PNChart
 
+
 class ResultViewController: UIViewController {
     
-    @IBOutlet weak var barChart: PNBarChart!
+    @IBOutlet weak var barChartView: UIView!
+    var barChart = PNBarChart()
+    
     var results: NSMutableArray = NSMutableArray()
 
     override func viewDidLoad() {
@@ -44,66 +47,71 @@ class ResultViewController: UIViewController {
 //            barWidth: 20
 //        )
 //        barChartContainer.addSubview(chart.view)
+        createBarChart()
     }
     
-    
+//    func yLabelFormatter(yValue: CGFloat, Failure: @escaping PNYLabelFormatter) -> String {
+//        let barChartFormatter = NumberFormatter()
+//        barChartFormatter.numberStyle = .currency
+//        barChartFormatter.allowsFloats = false
+//        barChartFormatter.maximumFractionDigits = 0
+//        Failure(yValue)
+//        return barChartFormatter.string(from: NSNumber(value: yValue))
+//    }
     
     func createBarChart() {
-        let barChartFormatter = NumberFormatter()
-        barChartFormatter.numberStyle = .currency
-        barChartFormatter.allowsFloats = false
-        barChartFormatter.maximumFractionDigits = 0
+//        let barChartFormatter = NumberFormatter()
+//        barChartFormatter.numberStyle = .currency
+//        barChartFormatter.allowsFloats = false
+//        barChartFormatter.maximumFractionDigits = 0
 
-//        self.barChart =  {yValue in
-//            return barChartFormatter.string(from: NSNumber(value: yValue))!
+
+//        self.barChart.yLabelFormatter = { (yValue) in
+//            barChartFormatter.string(from: NSNumber(value: yValue))
 //        }
-        self.barChart.backgroundColor = UIColor.clear
-//        self.barChart.yLabelFormatter =  ({ (yValue: Float) -> (String) in
-//            return barChartFormatter.string(from: NSNumber(value: yValue))!
-//        })
+//        self.barChart.frame = PNBarChart
+//        barChart = PNBarChart(frame: CGRect(x: 0, y: 0, width: 768, height: 352))
         
-        /*
-         
-         let bars: [ChartBarModel] = barModels.enumerated().map {index, barModel in
-         return ChartBarModel(constant: ChartAxisValueDouble(index), axisValue1: zero, axisValue2: ChartAxisValueDouble(barModel.1), bgColor: color)
-         }
-         
-         static NSNumberFormatter *barChartFormatter;
-         if (!barChartFormatter){
-         barChartFormatter = [[NSNumberFormatter alloc] init];
-         barChartFormatter.numberStyle = NSNumberFormatterCurrencyStyle;
-         barChartFormatter.allowsFloats = NO;
-         barChartFormatter.maximumFractionDigits = 0;
-         }
-         self.titleLabel.text = @"Bar Chart";
-         
-         self.barChart = [[PNBarChart alloc] initWithFrame:CGRectMake(0, 135.0, SCREEN_WIDTH, 200.0)];
-         //        self.barChart.showLabel = NO;
-         self.barChart.backgroundColor = [UIColor clearColor];
-         self.barChart.yLabelFormatter = ^(CGFloat yValue){
-         return [barChartFormatter stringFromNumber:[NSNumber numberWithFloat:yValue]];
-         };
-         
-         self.barChart.yChartLabelWidth = 20.0;
-         self.barChart.chartMarginLeft = 30.0;
-         self.barChart.chartMarginRight = 10.0;
-         self.barChart.chartMarginTop = 5.0;
-         self.barChart.chartMarginBottom = 10.0;
-         
-         
-         self.barChart.labelMarginTop = 5.0;
-         self.barChart.showChartBorder = YES;
-         [self.barChart setXLabels:@[@"2",@"3",@"4",@"5",@"2",@"3",@"4",@"5"]];
-         //       self.barChart.yLabels = @[@-10,@0,@10];
-         //        [self.barChart setYValues:@[@10000.0,@30000.0,@10000.0,@100000.0,@500000.0,@1000000.0,@1150000.0,@2150000.0]];
-         [self.barChart setYValues:@[@10.82,@1.88,@6.96,@33.93,@10.82,@1.88,@6.96,@33.93]];
-         [self.barChart setStrokeColors:@[PNGreen,PNGreen,PNRed,PNGreen,PNGreen,PNGreen,PNRed,PNGreen]];
-         self.barChart.isGradientShow = NO;
-         self.barChart.isShowNumbers = NO;
-         
-         [self.barChart strokeChart];
-         self.barChart.delegate = self;
- */
+        
+        
+
+        
+        self.barChart.backgroundColor = UIColor.clear
+
+        self.barChart.yChartLabelWidth = 20.0
+        self.barChart.chartMarginLeft = 30.0
+        self.barChart.chartMarginRight = 10.0
+        self.barChart.chartMarginTop = 5.0
+        self.barChart.chartMarginBottom = 10.0
+
+        self.barChart.labelMarginTop = 5.0
+        self.barChart.showChartBorder = true;
+        self.barChart.xLabels = ["2","3","4","5","2","3","4","5","2","3","4","5","2","3","4","5"]
+        self.barChart.yValues = [10.82,1.88,6.96,33.93,10.82,1.88,6.96,33.93,10.82,1.88,6.96,33.93,10.82,1.88,6.96,33.93]
+        self.barChart.strokeColors = [UIColor.green,UIColor.green,UIColor.red,UIColor.green,UIColor.green,UIColor.green,UIColor.red,UIColor.green,UIColor.green,UIColor.green,UIColor.red,UIColor.green,UIColor.green,UIColor.green,UIColor.red,UIColor.green]
+
+        self.barChart.isGradientShow = false
+        self.barChart.isShowNumbers = false
+        
+        self.barChart.stroke()
+        
+        barChartView.addSubview(self.barChart)
+        barChart.translatesAutoresizingMaskIntoConstraints = false
+        let horizontalConstraint = NSLayoutConstraint(item: barChart, attribute: NSLayoutAttribute.centerX, relatedBy: NSLayoutRelation.equal, toItem: barChartView, attribute: NSLayoutAttribute.centerX, multiplier: 1, constant: 0)
+        let verticalConstraint = NSLayoutConstraint(item: barChart, attribute: NSLayoutAttribute.centerY, relatedBy: NSLayoutRelation.equal, toItem: barChartView, attribute: NSLayoutAttribute.centerY, multiplier: 1, constant: 0)
+        let widthConstraint = NSLayoutConstraint(item: barChart, attribute: NSLayoutAttribute.width, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: 768)
+        let heightConstraint = NSLayoutConstraint(item: barChart, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: 352)
+        barChartView.addConstraints([horizontalConstraint, verticalConstraint, widthConstraint, heightConstraint])
+
+//        let topConstraint = NSLayoutConstraint(item: barChart, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: barChartView, attribute: NSLayoutAttribute.top, multiplier: 1, constant: 0)
+//        let bottomConstraint = NSLayoutConstraint(item: barChart, attribute: NSLayoutAttribute.bottom, relatedBy: NSLayoutRelation.equal, toItem: barChartView, attribute: NSLayoutAttribute.bottom, multiplier: 1, constant: 0)
+//        let leadConstraint = NSLayoutConstraint(item: barChart, attribute: NSLayoutAttribute.leading, relatedBy: NSLayoutRelation.equal, toItem: barChartView, attribute: NSLayoutAttribute.leading, multiplier: 1, constant: 0)
+//        let tailConstraint = NSLayoutConstraint(item: barChart, attribute: NSLayoutAttribute.trailing, relatedBy: NSLayoutRelation.equal, toItem: barChartView, attribute: NSLayoutAttribute.trailing, multiplier: 1, constant: 0)
+//        barChartView.addConstraints([topConstraint, bottomConstraint, leadConstraint, tailConstraint])
+
+//        barChartView.updateConstraintsIfNeeded()
+
+
     }
 
     override func didReceiveMemoryWarning() {

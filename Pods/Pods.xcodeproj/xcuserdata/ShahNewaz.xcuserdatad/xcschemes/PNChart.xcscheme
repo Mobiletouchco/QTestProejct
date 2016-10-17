@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C408D4E183A88B763793C217A66A1950"
-               BuildableName = "HexColors.framework"
-               BlueprintName = "HexColors"
+               BlueprintIdentifier = "016D982990393D4CF14C8AE7998AEC65"
+               BuildableName = "PNChart.framework"
+               BlueprintName = "PNChart"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "C408D4E183A88B763793C217A66A1950"
-            BuildableName = "HexColors.framework"
-            BlueprintName = "HexColors"
+            BlueprintIdentifier = "016D982990393D4CF14C8AE7998AEC65"
+            BuildableName = "PNChart.framework"
+            BlueprintName = "PNChart"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -60,6 +60,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "016D982990393D4CF14C8AE7998AEC65"
+            BuildableName = "PNChart.framework"
+            BlueprintName = "PNChart"
+            ReferencedContainer = "container:Pods.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
