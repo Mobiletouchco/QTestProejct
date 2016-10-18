@@ -16,6 +16,8 @@ class ResultViewController: UIViewController {
     
     @IBOutlet weak var barChartView: UIView!
     var barChart = PNBarChart()
+    @IBOutlet weak var pieChartView: UIView!
+    var pieChart = PNPieChart()
     
     var results: NSMutableArray = NSMutableArray()
 
@@ -23,41 +25,59 @@ class ResultViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
+        title = "نتيجتك في الإختبار"
         requestForResult()
-        
-//        let chartConfig = BarsChartConfig(
-//            valsAxisConfig: ChartAxisConfig(from: 0, to: 8, by: 2)
-//        )
-//        
-//        let chart = BarsChart(
-//            frame: barChartContainer.bounds,
-//            chartConfig: chartConfig,
-//            xTitle: "X axis",
-//            yTitle: "Y axis",
-//            bars: [
-//                ("A", 2),
-//                ("B", 4.5),
-//                ("C", 3),
-//                ("D", 5.4),
-//                ("E", 6.8),
-//                ("F", 0.5)
-//            ],
-//            color: UIColor.red,
-//            barWidth: 20
-//        )
-//        barChartContainer.addSubview(chart.view)
-        createBarChart()
+
+//        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage.init(named: "menu"), style: .plain, target: self, action: #selector(toggleSideMenu(sender:)))
+
     }
     
-//    func yLabelFormatter(yValue: CGFloat, Failure: @escaping PNYLabelFormatter) -> String {
-//        let barChartFormatter = NumberFormatter()
-//        barChartFormatter.numberStyle = .currency
-//        barChartFormatter.allowsFloats = false
-//        barChartFormatter.maximumFractionDigits = 0
-//        Failure(yValue)
-//        return barChartFormatter.string(from: NSNumber(value: yValue))
-//    }
+    func toggleSideMenu(sender: UIBarButtonItem) {
+        UserObject.sharedUser.container?.toggleRightSideMenuCompletion({
+            
+        })
+    }
+    
+    func createPieChart() {
+        let items = NSMutableArray()
+        for cat in results {
+            let category = cat as! Category
+            if category.totalCorrectAnswers.intValue > 0 {
+                items.add(PNPieChartDataItem(value: CGFloat(category.totalCorrectAnswers), color: category.bgColor, description: category.categoryTitle))
+            }
+        }
+//        items.add(PNPieChartDataItem(value: 10, color: UIColor.red, description: ""))
+//        items.add(PNPieChartDataItem(value: 10, color: UIColor.green, description: "WWDC"))
+//        items.add(PNPieChartDataItem(value: 10, color: UIColor.orange, description: "GOOG I/O"))
+
+        let screenSize: CGRect = UIScreen.main.bounds
+        var maxSize = screenSize.width
+        if maxSize > screenSize.height {
+            maxSize = screenSize.height
+        }
+        self.pieChart = PNPieChart(frame: CGRect(x: 0, y: 0, width: (maxSize-100)/2, height: (maxSize-100)/2), items: items as [AnyObject])
+        self.pieChart.backgroundColor = UIColor.clear
+        pieChartView.addSubview(self.pieChart)
+        pieChart.translatesAutoresizingMaskIntoConstraints = false
+        let horizontalConstraint = NSLayoutConstraint(item: pieChart, attribute: NSLayoutAttribute.centerX, relatedBy: NSLayoutRelation.equal, toItem: pieChartView, attribute: NSLayoutAttribute.centerX, multiplier: 1, constant: 0)
+        let verticalConstraint = NSLayoutConstraint(item: pieChart, attribute: NSLayoutAttribute.centerY, relatedBy: NSLayoutRelation.equal, toItem: pieChartView, attribute: NSLayoutAttribute.centerY, multiplier: 1, constant: 0)
+        let widthConstraint = NSLayoutConstraint(item: pieChart, attribute: NSLayoutAttribute.width, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: (maxSize-100)/2)
+        let heightConstraint = NSLayoutConstraint(item: pieChart, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: (maxSize-100)/2)
+        pieChartView.addConstraints([horizontalConstraint, verticalConstraint, widthConstraint, heightConstraint])
+
+        self.pieChart.descriptionTextColor = UIColor.white
+        self.pieChart.descriptionTextFont  = UIFont(name: "Avenir-Medium", size: 18)
+        self.pieChart.descriptionTextShadowColor = UIColor.clear
+        self.pieChart.showAbsoluteValues = false
+        self.pieChart.showOnlyValues = true
+        self.pieChart.stroke()
+
+//        self.pieChart.legendStyle = .stacked
+//        self.pieChart.legendFont = UIFont.boldSystemFont(ofSize: 14)
+//        let legend = self.pieChart.getLegendWithMaxWidth(200)
+//        [legend setFrame:CGRectMake(130, 350, legend.frame.size.width, legend.frame.size.height)];
+//        [self.view addSubview:legend];
+    }
     
     func createBarChart() {
 //        let barChartFormatter = NumberFormatter()
@@ -69,49 +89,43 @@ class ResultViewController: UIViewController {
 //        self.barChart.yLabelFormatter = { (yValue) in
 //            barChartFormatter.string(from: NSNumber(value: yValue))
 //        }
+        
+        let screenSize: CGRect = UIScreen.main.bounds
+        var maxSize = screenSize.width
+        if maxSize > screenSize.height {
+            maxSize = screenSize.height
+        }
+        
 //        self.barChart.frame = PNBarChart
-//        barChart = PNBarChart(frame: CGRect(x: 0, y: 0, width: 768, height: 352))
-        
-        
-        
-
-        
+        barChart = PNBarChart(frame: CGRect(x: 0, y: 0, width: maxSize, height: (maxSize-64)/2))
         self.barChart.backgroundColor = UIColor.clear
+        barChartView.addSubview(self.barChart)
+        barChart.translatesAutoresizingMaskIntoConstraints = false
+        let horizontalConstraint = NSLayoutConstraint(item: barChart, attribute: NSLayoutAttribute.centerX, relatedBy: NSLayoutRelation.equal, toItem: barChartView, attribute: NSLayoutAttribute.centerX, multiplier: 1, constant: 0)
+        let verticalConstraint = NSLayoutConstraint(item: barChart, attribute: NSLayoutAttribute.centerY, relatedBy: NSLayoutRelation.equal, toItem: barChartView, attribute: NSLayoutAttribute.centerY, multiplier: 1, constant: 0)
+        let widthConstraint = NSLayoutConstraint(item: barChart, attribute: NSLayoutAttribute.width, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: maxSize)
+        let heightConstraint = NSLayoutConstraint(item: barChart, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: (maxSize-64)/2)
+        barChartView.addConstraints([horizontalConstraint, verticalConstraint, widthConstraint, heightConstraint])
+
 
         self.barChart.yChartLabelWidth = 20.0
         self.barChart.chartMarginLeft = 30.0
         self.barChart.chartMarginRight = 10.0
         self.barChart.chartMarginTop = 5.0
         self.barChart.chartMarginBottom = 10.0
-
+        self.barChart.yMaxValue = 20
         self.barChart.labelMarginTop = 5.0
         self.barChart.showChartBorder = true;
-        self.barChart.xLabels = ["2","3","4","5","2","3","4","5","2","3","4","5","2","3","4","5"]
-        self.barChart.yValues = [10.82,1.88,6.96,33.93,10.82,1.88,6.96,33.93,10.82,1.88,6.96,33.93,10.82,1.88,6.96,33.93]
-        self.barChart.strokeColors = [UIColor.green,UIColor.green,UIColor.red,UIColor.green,UIColor.green,UIColor.green,UIColor.red,UIColor.green,UIColor.green,UIColor.green,UIColor.red,UIColor.green,UIColor.green,UIColor.green,UIColor.red,UIColor.green]
+
+        self.barChart.xLabels = results.value(forKey: "categoryTitle") as! [String] //["2","3","4","5","2","3","4","5","2","3","4","5","2","3","4","5"]
+        self.barChart.yValues = results.value(forKey: "totalCorrectAnswers") as! [NSNumber]//[10.82,1.88,6.96,33.93,10.82,1.88,6.96,33.93,10.82,1.88,6.96,33.93,10.82,1.88,6.96,33.93]
+        self.barChart.strokeColors = results.value(forKey: "bgColor") as! [UIColor]//[UIColor.green,UIColor.green,UIColor.red,UIColor.green,UIColor.green,UIColor.green,UIColor.red,UIColor.green,UIColor.green,UIColor.green,UIColor.red,UIColor.green,UIColor.green,UIColor.green,UIColor.red,UIColor.green]
 
         self.barChart.isGradientShow = false
-        self.barChart.isShowNumbers = false
+        self.barChart.isShowNumbers = true
         
         self.barChart.stroke()
         
-        barChartView.addSubview(self.barChart)
-        barChart.translatesAutoresizingMaskIntoConstraints = false
-        let horizontalConstraint = NSLayoutConstraint(item: barChart, attribute: NSLayoutAttribute.centerX, relatedBy: NSLayoutRelation.equal, toItem: barChartView, attribute: NSLayoutAttribute.centerX, multiplier: 1, constant: 0)
-        let verticalConstraint = NSLayoutConstraint(item: barChart, attribute: NSLayoutAttribute.centerY, relatedBy: NSLayoutRelation.equal, toItem: barChartView, attribute: NSLayoutAttribute.centerY, multiplier: 1, constant: 0)
-        let widthConstraint = NSLayoutConstraint(item: barChart, attribute: NSLayoutAttribute.width, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: 768)
-        let heightConstraint = NSLayoutConstraint(item: barChart, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: 352)
-        barChartView.addConstraints([horizontalConstraint, verticalConstraint, widthConstraint, heightConstraint])
-
-//        let topConstraint = NSLayoutConstraint(item: barChart, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: barChartView, attribute: NSLayoutAttribute.top, multiplier: 1, constant: 0)
-//        let bottomConstraint = NSLayoutConstraint(item: barChart, attribute: NSLayoutAttribute.bottom, relatedBy: NSLayoutRelation.equal, toItem: barChartView, attribute: NSLayoutAttribute.bottom, multiplier: 1, constant: 0)
-//        let leadConstraint = NSLayoutConstraint(item: barChart, attribute: NSLayoutAttribute.leading, relatedBy: NSLayoutRelation.equal, toItem: barChartView, attribute: NSLayoutAttribute.leading, multiplier: 1, constant: 0)
-//        let tailConstraint = NSLayoutConstraint(item: barChart, attribute: NSLayoutAttribute.trailing, relatedBy: NSLayoutRelation.equal, toItem: barChartView, attribute: NSLayoutAttribute.trailing, multiplier: 1, constant: 0)
-//        barChartView.addConstraints([topConstraint, bottomConstraint, leadConstraint, tailConstraint])
-
-//        barChartView.updateConstraintsIfNeeded()
-
-
     }
 
     override func didReceiveMemoryWarning() {
@@ -122,7 +136,7 @@ class ResultViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = false
-//        self.navigationItem.hidesBackButton = true
+        self.navigationItem.hidesBackButton = true
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -141,8 +155,8 @@ class ResultViewController: UIViewController {
                 for info in list {
                     self.results.add(Category(info as! NSDictionary))
                 }
-//                self.currentQues = Question(response.value(forKey: "results") as! NSDictionary)
-//                self.refreshQuestion()
+                self.createBarChart()
+                self.createPieChart()
                 return
             }
             

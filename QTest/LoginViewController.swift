@@ -17,15 +17,16 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        userNameFld.text = "shah"
-        passwordFld.text = "123456"
-        if USERDEFAULTS.bool(forKey: kStringLoginKey) {
-            UserObject.sharedUser.retriveUserFromLocal()
-            navigationController?.pushViewController((storyboard?.instantiateViewController(withIdentifier: "WelcomeViewController"))!, animated: false)
-//            self.performSegue(withIdentifier: String(describing: WelcomeViewController.self), sender: nil)
-        }
+//        userNameFld.text = "shah"
+//        passwordFld.text = "123456"
+//        if USERDEFAULTS.bool(forKey: kStringLoginKey) {
+//            UserObject.sharedUser.retriveUserFromLocal()
+//            navigationController?.pushViewController((storyboard?.instantiateViewController(withIdentifier: "WelcomeViewController"))!, animated: false)
+////            self.performSegue(withIdentifier: String(describing: WelcomeViewController.self), sender: nil)
+//        }
     }
-
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

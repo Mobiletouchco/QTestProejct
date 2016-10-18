@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MFSideMenu
 
 class UserObject: NSObject, NSCoding {
     
@@ -17,12 +18,19 @@ class UserObject: NSObject, NSCoding {
     var email: String = ""
     var contactNumber: String = ""
 
+    var container: MFSideMenuContainerViewController? = nil
+    var willGoForTest: Bool = false
+
     static let sharedUser : UserObject = {
         let instance = UserObject()
         return instance
     }()
     
-    
+    func createContainer(centreVC: UIViewController) {
+        container = MFSideMenuContainerViewController.container(withCenter: centreVC, leftMenuViewController: nil, rightMenuViewController: MenuItemsViewController())
+        container?.panMode = MFSideMenuPanModeNone
+        container?.navigationItem.hidesBackButton = true
+    }
     
     convenience init(_ dictionary: NSDictionary) {
         self.init()
@@ -128,6 +136,7 @@ class Category: NSObject {
     var categoryTitle: String = ""
     var totalCorrectAnswers: NSNumber = 0
     var totalQuestions: NSNumber = 0
+    var bgColor: UIColor = UIColor.lightGray
 
     convenience init(_ dictionary: NSDictionary) {
         self.init()
@@ -135,8 +144,49 @@ class Category: NSObject {
         categoryTitle = dictionary["category_title"] as! String
         totalCorrectAnswers = dictionary["total_correct_answers"] as! NSNumber
         totalQuestions = dictionary["total_questions"] as! NSNumber
-
+        
+//        let cid = NumberFormatter().number(from: categoryId)
+        switch categoryId {
+        case "2":
+            bgColor = UIColor(red:0.10, green:0.64, blue:0.11, alpha:1.00)
+            break
+        case "3":
+            bgColor = UIColor(red:0.99, green:0.96, blue:0.21, alpha:1.00)
+            break
+        case "4":
+            bgColor = UIColor(red:0.33, green:0.16, blue:0.45, alpha:1.00)
+            break
+        case "5":
+            bgColor = UIColor(red:0.86, green:0.38, blue:0.13, alpha:1.00)
+            break
+        case "6":
+            bgColor = UIColor(red:0.20, green:0.44, blue:0.71, alpha:1.00)
+            break
+        default:
+            bgColor = UIColor(red:0.99, green:0.05, blue:0.11, alpha:1.00)
+            break
+        }
     }
     
+//    func encode(with aCoder: NSCoder) {
+//        aCoder.encode(categoryId, forKey: "user_id")
+//        aCoder.encode(userName, forKey: "user_name")
+//        aCoder.encode(categoryTitle, forKey: "test_taken_count")
+//        aCoder.encode(totalCorrectAnswers, forKey: "first_name")
+//        aCoder.encode(totalQuestions, forKey: "email")
+//        aCoder.encode(contactNumber, forKey: "contact_number")
+//    }
+//    
+//    
+//    
+//    required convenience init(coder decoder: NSCoder) {
+//        self.init()
+//        userId = decoder.decodeObject(forKey: "user_id") as! String
+//        userName = decoder.decodeObject(forKey: "user_name") as! String
+//        testTakenCount = decoder.decodeObject(forKey: "test_taken_count") as! String
+//        firstName = decoder.decodeObject(forKey: "first_name") as! String
+//        email = decoder.decodeObject(forKey: "email") as! String
+//        contactNumber = decoder.decodeObject(forKey: "contact_number") as! String
+//    }
 }
 

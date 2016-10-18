@@ -23,7 +23,6 @@ class QuestionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Welcome to Qtest"
         // Do any additional setup after loading the view.
 //        self.sideMenuController()?.sideMenu?.delegate = self
 //        let nav = self.navigationController as! ENSideMenuNavigationController
@@ -75,7 +74,8 @@ class QuestionViewController: UIViewController {
             }
         
 //            self.navigationController?.pushViewController((self.storyboard?.instantiateViewController(withIdentifier: "ResultViewController"))!, animated: true)
-            self.performSegue(withIdentifier: "ResultViewController", sender: nil)
+            UserObject.sharedUser.container?.centerViewController = self.storyboard?.instantiateViewController(withIdentifier: "ResultViewController")
+//            self.performSegue(withIdentifier: "ResultViewController", sender: nil)
             
         }) { (error) in
             TSMessage.showNotification(withTitle: error, type: .error)
@@ -83,6 +83,7 @@ class QuestionViewController: UIViewController {
     }
     
     func refreshQuestion() {
+        trueBtn.superview?.isHidden = false
         quesLbl.text = currentQues?.questionText
         falseBtn.isSelected = false
         trueBtn.isSelected = false

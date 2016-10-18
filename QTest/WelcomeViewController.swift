@@ -12,32 +12,35 @@ import MFSideMenu
 class WelcomeViewController: UIViewController {
 
     @IBOutlet weak var fullNameLbl: UILabel!
-    private var container: MFSideMenuContainerViewController? = nil
         
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-
         fullNameLbl.text = UserObject.sharedUser.firstName
     }
-
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.isNavigationBarHidden = true
+        if UserObject.sharedUser.willGoForTest {
+            goForward()
+        }
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
     func goBack() {
+        USERDEFAULTS.set(false, forKey: kStringLoginKey)
+        USERDEFAULTS.synchronize()
         _ = self.navigationController?.popToRootViewController(animated: true)
     }
     func goForward() {
-        container = MFSideMenuContainerViewController.container(withCenter: storyboard?.instantiateViewController(withIdentifier: "QuestionViewController"), leftMenuViewController: nil, rightMenuViewController: MenuItemsViewController())
-        // disable panning on the side menus, only allow panning on the center view controller:
-//        menuContainerViewController.panMode = MFSideMenuPanModeCenterViewController
-        // disable all panning
-        container?.panMode = MFSideMenuPanModeNone
-        container?.navigationItem.hidesBackButton = true
-        container?.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Toggle", style: .plain, target: self, action: #selector(toggleSideMenu(sender:)))
-        self.navigationController?.pushViewController(container!, animated: true)
+        UserObject.sharedUser.createContainer(centreVC: (storyboard?.instantiateViewController(withIdentifier: String(describing: QuestionViewController.self)))!)
+        UserObject.sharedUser.container?.title = "مرحبا لإختبار الميول"
+        UserObject.sharedUser.container?.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage.init(named: "menu"), style: .plain, target: self, action: #selector(toggleSideMenu(sender:)))//UIBarButtonItem(title: "Toggle", style: .plain, target: self, action: #selector(toggleSideMenu(sender:)))
+        self.navigationController?.pushViewController(UserObject.sharedUser.container!, animated: !UserObject.sharedUser.willGoForTest)
+        UserObject.sharedUser.willGoForTest = false
     }
     /*
     // MARK: - Navigation
@@ -50,7 +53,7 @@ class WelcomeViewController: UIViewController {
     */
 
     func toggleSideMenu(sender: UIBarButtonItem) {
-        container?.toggleRightSideMenuCompletion({ 
+        UserObject.sharedUser.container?.toggleRightSideMenuCompletion({
             
         })
     }

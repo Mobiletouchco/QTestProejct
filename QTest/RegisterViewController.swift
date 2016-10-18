@@ -22,10 +22,10 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        nameFld.text = "Shah Newaz"
-        userNameFld.text = "shah"
-        passwordFld.text = "123456"
-        emailFld.text = "s1@s.com"
+//        nameFld.text = "Shah Newaz"
+//        userNameFld.text = "shah"
+//        passwordFld.text = "123456"
+//        emailFld.text = "s1@s.com"
     }
 
     override func didReceiveMemoryWarning() {
