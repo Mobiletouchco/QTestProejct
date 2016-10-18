@@ -13,13 +13,13 @@
 
 import Foundation
 
-open class CombinedChartData: BarLineScatterCandleBubbleChartData
+public class CombinedChartData: BarLineScatterCandleBubbleChartData
 {
-    fileprivate var _lineData: LineChartData!
-    fileprivate var _barData: BarChartData!
-    fileprivate var _scatterData: ScatterChartData!
-    fileprivate var _candleData: CandleChartData!
-    fileprivate var _bubbleData: BubbleChartData!
+    private var _lineData: LineChartData!
+    private var _barData: BarChartData!
+    private var _scatterData: ScatterChartData!
+    private var _candleData: CandleChartData!
+    private var _bubbleData: BubbleChartData!
     
     public override init()
     {
@@ -36,7 +36,7 @@ open class CombinedChartData: BarLineScatterCandleBubbleChartData
         super.init(xVals: xVals, dataSets: dataSets)
     }
     
-    open var lineData: LineChartData!
+    public var lineData: LineChartData!
     {
         get
         {
@@ -59,7 +59,7 @@ open class CombinedChartData: BarLineScatterCandleBubbleChartData
         }
     }
     
-    open var barData: BarChartData!
+    public var barData: BarChartData!
     {
         get
         {
@@ -82,7 +82,7 @@ open class CombinedChartData: BarLineScatterCandleBubbleChartData
         }
     }
     
-    open var scatterData: ScatterChartData!
+    public var scatterData: ScatterChartData!
     {
         get
         {
@@ -105,7 +105,7 @@ open class CombinedChartData: BarLineScatterCandleBubbleChartData
         }
     }
     
-    open var candleData: CandleChartData!
+    public var candleData: CandleChartData!
     {
         get
         {
@@ -128,7 +128,7 @@ open class CombinedChartData: BarLineScatterCandleBubbleChartData
         }
     }
     
-    open var bubbleData: BubbleChartData!
+    public var bubbleData: BubbleChartData!
     {
         get
         {
@@ -152,7 +152,7 @@ open class CombinedChartData: BarLineScatterCandleBubbleChartData
     }
     
     /// - returns: all data objects in row: line-bar-scatter-candle-bubble if not null.
-    open var allData: [ChartData]
+    public var allData: [ChartData]
     {
         var data = [ChartData]()
         
@@ -180,7 +180,7 @@ open class CombinedChartData: BarLineScatterCandleBubbleChartData
         return data
     }
     
-    open override func notifyDataChanged()
+    public override func notifyDataChanged()
     {
         if (_lineData !== nil)
         {
@@ -211,7 +211,7 @@ open class CombinedChartData: BarLineScatterCandleBubbleChartData
     ///
     /// - parameter highlight:
     /// - returns: the entry that is highlighted
-    open override func getEntryForHighlight(_ highlight: ChartHighlight) -> ChartDataEntry?
+    public override func getEntryForHighlight(highlight: ChartHighlight) -> ChartDataEntry?
     {
         let dataObjects = allData
         

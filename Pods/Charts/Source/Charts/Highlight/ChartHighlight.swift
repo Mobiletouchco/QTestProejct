@@ -14,27 +14,27 @@
 
 import Foundation
 
-open class ChartHighlight: NSObject
+public class ChartHighlight: NSObject
 {
     /// the x-index of the highlighted value
-    fileprivate var _xIndex = Int(0)
+    private var _xIndex = Int(0)
     
     /// the y-value of the highlighted value
-    fileprivate var _value = Double.nan
+    private var _value = Double.NaN
     
     /// the index of the data object - in case it refers to more than one
-    fileprivate var _dataIndex = Int(0)
+    private var _dataIndex = Int(0)
     
     /// the index of the dataset the highlighted value is in
-    fileprivate var _dataSetIndex = Int(0)
+    private var _dataSetIndex = Int(0)
     
     /// index which value of a stacked bar entry is highlighted
     /// 
     /// **default**: -1
-    fileprivate var _stackIndex = Int(-1)
+    private var _stackIndex = Int(-1)
     
     /// the range of the bar that is selected (only for stacked-barchart)
-    fileprivate var _range: ChartRange?
+    private var _range: ChartRange?
 
     public override init()
     {
@@ -94,65 +94,65 @@ open class ChartHighlight: NSObject
     /// - parameter stackIndex: references which value of a stacked-bar entry has been selected
     public convenience init(xIndex x: Int, dataSetIndex: Int, stackIndex: Int)
     {
-        self.init(xIndex: x, value: Double.nan, dataSetIndex: dataSetIndex, stackIndex: stackIndex, range: nil)
+        self.init(xIndex: x, value: Double.NaN, dataSetIndex: dataSetIndex, stackIndex: stackIndex, range: nil)
     }
     
     /// - parameter xIndex: the index of the highlighted value on the x-axis
     /// - parameter dataSetIndex: the index of the DataSet the highlighted value belongs to
     public convenience init(xIndex x: Int, dataSetIndex: Int)
     {
-        self.init(xIndex: x, value: Double.nan, dataSetIndex: dataSetIndex, stackIndex: -1, range: nil)
+        self.init(xIndex: x, value: Double.NaN, dataSetIndex: dataSetIndex, stackIndex: -1, range: nil)
     }
     
-    open var xIndex: Int { return _xIndex }
-    open var value: Double { return _value }
-    open var dataIndex: Int { return _dataIndex }
-    open var dataSetIndex: Int { return _dataSetIndex }
-    open var stackIndex: Int { return _stackIndex }
+    public var xIndex: Int { return _xIndex }
+    public var value: Double { return _value }
+    public var dataIndex: Int { return _dataIndex }
+    public var dataSetIndex: Int { return _dataSetIndex }
+    public var stackIndex: Int { return _stackIndex }
     
     /// - returns: the range of values the selected value of a stacked bar is in. (this is only relevant for stacked-barchart)
-    open var range: ChartRange? { return _range }
+    public var range: ChartRange? { return _range }
 
     // MARK: NSObject
     
-    open override var description: String
+    public override var description: String
     {
         return "Highlight, xIndex: \(_xIndex), dataIndex (combined charts): \(_dataIndex),dataSetIndex: \(_dataSetIndex), stackIndex (only stacked barentry): \(_stackIndex), value: \(_value)"
     }
     
-    open override func isEqual(_ object: Any?) -> Bool
+    public override func isEqual(object: AnyObject?) -> Bool
     {
-        if (object == nil)
+        if (object === nil)
         {
             return false
         }
         
-        if (!(object! as AnyObject).isKind(of: type(of: self)))
+        if (!object!.isKindOfClass(self.dynamicType))
         {
             return false
         }
         
-        if ((object! as AnyObject).xIndex != _xIndex)
+        if (object!.xIndex != _xIndex)
         {
             return false
         }
         
-        if ((object! as AnyObject).dataIndex != dataIndex)
+        if (object!.dataIndex != dataIndex)
         {
             return false
         }
         
-        if ((object! as AnyObject).dataSetIndex != _dataSetIndex)
+        if (object!.dataSetIndex != _dataSetIndex)
         {
             return false
         }
         
-        if ((object! as AnyObject).stackIndex != _stackIndex)
+        if (object!.stackIndex != _stackIndex)
         {
             return false
         }
         
-        if ((object! as AnyObject).value != value)
+        if (object!.value != value)
         {
             return false
         }
@@ -168,7 +168,7 @@ func ==(lhs: ChartHighlight, rhs: ChartHighlight) -> Bool
         return true
     }
     
-    if (!lhs.isKind(of: type(of: rhs)))
+    if (!lhs.isKindOfClass(rhs.dynamicType))
     {
         return false
     }

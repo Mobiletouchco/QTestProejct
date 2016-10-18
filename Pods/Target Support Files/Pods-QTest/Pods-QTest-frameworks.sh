@@ -84,24 +84,20 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework "$BUILT_PRODUCTS_DIR/Alamofire/Alamofire.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/AFNetworking/AFNetworking.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/Charts/Charts.framework"
   install_framework "$BUILT_PRODUCTS_DIR/HexColors/HexColors.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/IQKeyboardManager/IQKeyboardManager.framework"
   install_framework "$BUILT_PRODUCTS_DIR/MBProgressHUD/MBProgressHUD.framework"
   install_framework "$BUILT_PRODUCTS_DIR/MFSideMenu/MFSideMenu.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/PNChart/PNChart.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/SwiftCharts/SwiftCharts.framework"
   install_framework "$BUILT_PRODUCTS_DIR/TSMessages/TSMessages.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/UICountingLabel/UICountingLabel.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework "$BUILT_PRODUCTS_DIR/Alamofire/Alamofire.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/AFNetworking/AFNetworking.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/Charts/Charts.framework"
   install_framework "$BUILT_PRODUCTS_DIR/HexColors/HexColors.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/IQKeyboardManager/IQKeyboardManager.framework"
   install_framework "$BUILT_PRODUCTS_DIR/MBProgressHUD/MBProgressHUD.framework"
   install_framework "$BUILT_PRODUCTS_DIR/MFSideMenu/MFSideMenu.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/PNChart/PNChart.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/SwiftCharts/SwiftCharts.framework"
   install_framework "$BUILT_PRODUCTS_DIR/TSMessages/TSMessages.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/UICountingLabel/UICountingLabel.framework"
 fi

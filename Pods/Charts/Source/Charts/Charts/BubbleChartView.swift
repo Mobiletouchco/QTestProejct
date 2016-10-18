@@ -12,16 +12,16 @@
 import Foundation
 import CoreGraphics
 
-open class BubbleChartView: BarLineChartViewBase, BubbleChartDataProvider
+public class BubbleChartView: BarLineChartViewBase, BubbleChartDataProvider
 {
-    open override func initialize()
+    public override func initialize()
     {
         super.initialize()
         
         renderer = BubbleChartRenderer(dataProvider: self, animator: _animator, viewPortHandler: _viewPortHandler)
     }
     
-    open override func calcMinMax()
+    public override func calcMinMax()
     {
         super.calcMinMax()
         guard let data = _data else { return }
@@ -59,5 +59,5 @@ open class BubbleChartView: BarLineChartViewBase, BubbleChartDataProvider
     
     // MARK: - BubbleChartDataProbider
     
-    open var bubbleData: BubbleChartData? { return _data as? BubbleChartData }
+    public var bubbleData: BubbleChartData? { return _data as? BubbleChartData }
 }

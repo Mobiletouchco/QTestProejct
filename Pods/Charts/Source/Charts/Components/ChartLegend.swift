@@ -20,116 +20,116 @@ import CoreGraphics
 #endif
 
 
-open class ChartLegend: ChartComponentBase
+public class ChartLegend: ChartComponentBase
 {
     /// This property is deprecated - Use `position`, `horizontalAlignment`, `verticalAlignment`, `orientation`, `drawInside`, `direction`.
-    @available(*, deprecated: 1.0, message: "Use `position`, `horizontalAlignment`, `verticalAlignment`, `orientation`, `drawInside`, `direction`.")
+    @available(*, deprecated=1.0, message="Use `position`, `horizontalAlignment`, `verticalAlignment`, `orientation`, `drawInside`, `direction`.")
     @objc(ChartLegendPosition)
     public enum Position: Int
     {
-        case rightOfChart
-        case rightOfChartCenter
-        case rightOfChartInside
-        case leftOfChart
-        case leftOfChartCenter
-        case leftOfChartInside
-        case belowChartLeft
-        case belowChartRight
-        case belowChartCenter
-        case aboveChartLeft
-        case aboveChartRight
-        case aboveChartCenter
-        case piechartCenter
+        case RightOfChart
+        case RightOfChartCenter
+        case RightOfChartInside
+        case LeftOfChart
+        case LeftOfChartCenter
+        case LeftOfChartInside
+        case BelowChartLeft
+        case BelowChartRight
+        case BelowChartCenter
+        case AboveChartLeft
+        case AboveChartRight
+        case AboveChartCenter
+        case PiechartCenter
     }
     
     @objc(ChartLegendForm)
     public enum Form: Int
     {
-        case square
-        case circle
-        case line
+        case Square
+        case Circle
+        case Line
     }
     
     @objc(ChartLegendHorizontalAlignment)
     public enum HorizontalAlignment: Int
     {
-        case left
-        case center
-        case right
+        case Left
+        case Center
+        case Right
     }
     
     @objc(ChartLegendVerticalAlignment)
     public enum VerticalAlignment: Int
     {
-        case top
-        case center
-        case bottom
+        case Top
+        case Center
+        case Bottom
     }
     
     @objc(ChartLegendOrientation)
     public enum Orientation: Int
     {
-        case horizontal
-        case vertical
+        case Horizontal
+        case Vertical
     }
     
     @objc(ChartLegendDirection)
     public enum Direction: Int
     {
-        case leftToRight
-        case rightToLeft
+        case LeftToRight
+        case RightToLeft
     }
 
     /// the legend colors array, each color is for the form drawn at the same index
-    open var colors = [NSUIColor?]()
+    public var colors = [NSUIColor?]()
     
     // the legend text array. a nil label will start a group.
-    open var labels = [String?]()
+    public var labels = [String?]()
     
     internal var _extraColors = [NSUIColor?]()
     internal var _extraLabels = [String?]()
     
     /// colors that will be appended to the end of the colors array after calculating the legend.
-    open var extraColors: [NSUIColor?] { return _extraColors; }
+    public var extraColors: [NSUIColor?] { return _extraColors; }
     
     /// labels that will be appended to the end of the labels array after calculating the legend. a nil label will start a group.
-    open var extraLabels: [String?] { return _extraLabels; }
+    public var extraLabels: [String?] { return _extraLabels; }
     
     /// Are the legend labels/colors a custom value or auto calculated? If false, then it's auto, if true, then custom.
     /// 
     /// **default**: false (automatic legend)
-    fileprivate var _isLegendCustom = false
+    private var _isLegendCustom = false
     
     /// This property is deprecated - Use `position`, `horizontalAlignment`, `verticalAlignment`, `orientation`, `drawInside`, `direction`.
-    @available(*, deprecated: 1.0, message: "Use `position`, `horizontalAlignment`, `verticalAlignment`, `orientation`, `drawInside`, `direction`.")
-    open var position: Position
+    @available(*, deprecated=1.0, message="Use `position`, `horizontalAlignment`, `verticalAlignment`, `orientation`, `drawInside`, `direction`.")
+    public var position: Position
     {
         get
         {
-            if orientation == .vertical && horizontalAlignment == .center && verticalAlignment == .center
+            if orientation == .Vertical && horizontalAlignment == .Center && verticalAlignment == .Center
             {
-                return .piechartCenter
+                return .PiechartCenter
             }
-            else if orientation == .horizontal
+            else if orientation == .Horizontal
             {
-                if verticalAlignment == .top
+                if verticalAlignment == .Top
                 {
-                    return horizontalAlignment == .left ? .aboveChartLeft : (horizontalAlignment == .right ? .aboveChartRight : .aboveChartCenter)
+                    return horizontalAlignment == .Left ? .AboveChartLeft : (horizontalAlignment == .Right ? .AboveChartRight : .AboveChartCenter)
                 }
                 else
                 {
-                    return horizontalAlignment == .left ? .belowChartLeft : (horizontalAlignment == .right ? .belowChartRight : .belowChartCenter)
+                    return horizontalAlignment == .Left ? .BelowChartLeft : (horizontalAlignment == .Right ? .BelowChartRight : .BelowChartCenter)
                 }
             }
             else
             {
-                if horizontalAlignment == .left
+                if horizontalAlignment == .Left
                 {
-                    return verticalAlignment == .top && drawInside ? .leftOfChartInside : (verticalAlignment == .center ? .leftOfChartCenter : .leftOfChart)
+                    return verticalAlignment == .Top && drawInside ? .LeftOfChartInside : (verticalAlignment == .Center ? .LeftOfChartCenter : .LeftOfChart)
                 }
                 else
                 {
-                    return verticalAlignment == .top && drawInside ? .rightOfChartInside : (verticalAlignment == .center ? .rightOfChartCenter : .rightOfChart)
+                    return verticalAlignment == .Top && drawInside ? .RightOfChartInside : (verticalAlignment == .Center ? .RightOfChartCenter : .RightOfChart)
                 }
             }
         }
@@ -137,77 +137,77 @@ open class ChartLegend: ChartComponentBase
         {
             switch newValue
             {
-            case .leftOfChart: fallthrough
-            case .leftOfChartInside: fallthrough
-            case .leftOfChartCenter:
-                horizontalAlignment = .left
-                verticalAlignment = newValue == .leftOfChartCenter ? .center : .top
-                orientation = .vertical
+            case .LeftOfChart: fallthrough
+            case .LeftOfChartInside: fallthrough
+            case .LeftOfChartCenter:
+                horizontalAlignment = .Left
+                verticalAlignment = newValue == .LeftOfChartCenter ? .Center : .Top
+                orientation = .Vertical
                 
-            case .rightOfChart: fallthrough
-            case .rightOfChartInside: fallthrough
-            case .rightOfChartCenter:
-                horizontalAlignment = .right
-                verticalAlignment = newValue == .rightOfChartCenter ? .center : .top
-                orientation = .vertical
+            case .RightOfChart: fallthrough
+            case .RightOfChartInside: fallthrough
+            case .RightOfChartCenter:
+                horizontalAlignment = .Right
+                verticalAlignment = newValue == .RightOfChartCenter ? .Center : .Top
+                orientation = .Vertical
                 
-            case .aboveChartLeft: fallthrough
-            case .aboveChartCenter: fallthrough
-            case .aboveChartRight:
-                horizontalAlignment = newValue == .aboveChartLeft ? .left : (newValue == .aboveChartRight ? .right : .center)
-                verticalAlignment = .top
-                orientation = .horizontal
+            case .AboveChartLeft: fallthrough
+            case .AboveChartCenter: fallthrough
+            case .AboveChartRight:
+                horizontalAlignment = newValue == .AboveChartLeft ? .Left : (newValue == .AboveChartRight ? .Right : .Center)
+                verticalAlignment = .Top
+                orientation = .Horizontal
                 
-            case .belowChartLeft: fallthrough
-            case .belowChartCenter: fallthrough
-            case .belowChartRight:
-                horizontalAlignment = newValue == .belowChartLeft ? .left : (newValue == .belowChartRight ? .right : .center)
-                verticalAlignment = .bottom
-                orientation = .horizontal
+            case .BelowChartLeft: fallthrough
+            case .BelowChartCenter: fallthrough
+            case .BelowChartRight:
+                horizontalAlignment = newValue == .BelowChartLeft ? .Left : (newValue == .BelowChartRight ? .Right : .Center)
+                verticalAlignment = .Bottom
+                orientation = .Horizontal
                 
-            case .piechartCenter:
-                horizontalAlignment = .center
-                verticalAlignment = .center
-                orientation = .vertical
+            case .PiechartCenter:
+                horizontalAlignment = .Center
+                verticalAlignment = .Center
+                orientation = .Vertical
             }
             
-            drawInside = newValue == .leftOfChartInside || newValue == .rightOfChartInside
+            drawInside = newValue == .LeftOfChartInside || newValue == .RightOfChartInside
         }
     }
     
     /// The horizontal alignment of the legend
-    open var horizontalAlignment: HorizontalAlignment = HorizontalAlignment.left
+    public var horizontalAlignment: HorizontalAlignment = HorizontalAlignment.Left
     
     /// The vertical alignment of the legend
-    open var verticalAlignment: VerticalAlignment = VerticalAlignment.bottom
+    public var verticalAlignment: VerticalAlignment = VerticalAlignment.Bottom
     
     /// The orientation of the legend
-    open var orientation: Orientation = Orientation.horizontal
+    public var orientation: Orientation = Orientation.Horizontal
     
     /// Flag indicating whether the legend will draw inside the chart or outside
-    open var drawInside: Bool = false
+    public var drawInside: Bool = false
     
     /// Flag indicating whether the legend will draw inside the chart or outside
-    open var isDrawInsideEnabled: Bool { return drawInside }
+    public var isDrawInsideEnabled: Bool { return drawInside }
     
     /// The text direction of the legend
-    open var direction: Direction = Direction.leftToRight
+    public var direction: Direction = Direction.LeftToRight
 
-    open var font: NSUIFont = NSUIFont.systemFont(ofSize: 10.0)
-    open var textColor = NSUIColor.black
+    public var font: NSUIFont = NSUIFont.systemFontOfSize(10.0)
+    public var textColor = NSUIColor.blackColor()
 
-    open var form = Form.square
-    open var formSize = CGFloat(8.0)
-    open var formLineWidth = CGFloat(1.5)
+    public var form = Form.Square
+    public var formSize = CGFloat(8.0)
+    public var formLineWidth = CGFloat(1.5)
     
-    open var xEntrySpace = CGFloat(6.0)
-    open var yEntrySpace = CGFloat(0.0)
-    open var formToTextSpace = CGFloat(5.0)
-    open var stackSpace = CGFloat(3.0)
+    public var xEntrySpace = CGFloat(6.0)
+    public var yEntrySpace = CGFloat(0.0)
+    public var formToTextSpace = CGFloat(5.0)
+    public var stackSpace = CGFloat(3.0)
     
-    open var calculatedLabelSizes = [CGSize]()
-    open var calculatedLabelBreakPoints = [Bool]()
-    open var calculatedLineSizes = [CGSize]()
+    public var calculatedLabelSizes = [CGSize]()
+    public var calculatedLabelBreakPoints = [Bool]()
+    public var calculatedLineSizes = [CGSize]()
     
     public override init()
     {
@@ -233,7 +233,7 @@ open class ChartLegend: ChartComponentBase
         self.labelsObjc = labels
     }
     
-    open func getMaximumEntrySize(_ font: NSUIFont) -> CGSize
+    public func getMaximumEntrySize(font: NSUIFont) -> CGSize
     {
         var maxW = CGFloat(0.0)
         var maxH = CGFloat(0.0)
@@ -246,7 +246,7 @@ open class ChartLegend: ChartComponentBase
                 continue
             }
             
-            let size = (labels[i] as NSString!).size(attributes: [NSFontAttributeName: font])
+            let size = (labels[i] as NSString!).sizeWithAttributes([NSFontAttributeName: font])
             
             if (size.width > maxW)
             {
@@ -264,41 +264,41 @@ open class ChartLegend: ChartComponentBase
         )
     }
     
-    open func getLabel(_ index: Int) -> String?
+    public func getLabel(index: Int) -> String?
     {
         return labels[index]
     }
     
     /// This function is deprecated - Please read `neededWidth`/`neededHeight` after `calculateDimensions` was called.
-    @available(*, deprecated: 1.0, message: "Please read `neededWidth`/`neededHeight` after `calculateDimensions` was called.")
-    open func getFullSize(_ labelFont: NSUIFont) -> CGSize
+    @available(*, deprecated=1.0, message="Please read `neededWidth`/`neededHeight` after `calculateDimensions` was called.")
+    public func getFullSize(labelFont: NSUIFont) -> CGSize
     {
         return CGSize(width: neededWidth, height: neededHeight)
     }
 
-    open var neededWidth = CGFloat(0.0)
-    open var neededHeight = CGFloat(0.0)
-    open var textWidthMax = CGFloat(0.0)
-    open var textHeightMax = CGFloat(0.0)
+    public var neededWidth = CGFloat(0.0)
+    public var neededHeight = CGFloat(0.0)
+    public var textWidthMax = CGFloat(0.0)
+    public var textHeightMax = CGFloat(0.0)
     
     /// flag that indicates if word wrapping is enabled
     /// this is currently supported only for `orientation == Horizontal`.
     /// you may want to set maxSizePercent when word wrapping, to set the point where the text wraps.
     /// 
     /// **default**: false
-    open var wordWrapEnabled = true
+    public var wordWrapEnabled = true
     
     /// if this is set, then word wrapping the legend is enabled.
-    open var isWordWrapEnabled: Bool { return wordWrapEnabled }
+    public var isWordWrapEnabled: Bool { return wordWrapEnabled }
 
     /// The maximum relative size out of the whole chart view in percent.
     /// If the legend is to the right/left of the chart, then this affects the width of the legend.
     /// If the legend is to the top/bottom of the chart, then this affects the height of the legend.
     /// 
     /// **default**: 0.95 (95%)
-    open var maxSizePercent: CGFloat = 0.95
+    public var maxSizePercent: CGFloat = 0.95
     
-    open func calculateDimensions(labelFont: NSUIFont, viewPortHandler: ChartViewPortHandler)
+    public func calculateDimensions(labelFont labelFont: NSUIFont, viewPortHandler: ChartViewPortHandler)
     {
         let maxEntrySize = getMaximumEntrySize(labelFont)
         textWidthMax = maxEntrySize.width
@@ -306,7 +306,7 @@ open class ChartLegend: ChartComponentBase
         
         switch orientation
         {
-        case .vertical:
+        case .Vertical:
             
             var maxWidth = CGFloat(0.0)
             var width = CGFloat(0.0)
@@ -337,7 +337,7 @@ open class ChartLegend: ChartComponentBase
                 
                 if labels[i] != nil
                 {
-                    let size = (labels[i] as NSString!).size(attributes: [NSFontAttributeName: labelFont])
+                    let size = (labels[i] as NSString!).sizeWithAttributes([NSFontAttributeName: labelFont])
                     
                     if drawingForm && !wasStacked
                     {
@@ -375,7 +375,7 @@ open class ChartLegend: ChartComponentBase
             neededWidth = maxWidth
             neededHeight = maxHeight
             
-        case .horizontal:
+        case .Horizontal:
             
             var labels = self.labels
             var colors = self.colors
@@ -393,15 +393,15 @@ open class ChartLegend: ChartComponentBase
             // Prepare arrays for calculated layout
             if (calculatedLabelSizes.count != labelCount)
             {
-                calculatedLabelSizes = [CGSize](repeating: CGSize(), count: labelCount)
+                calculatedLabelSizes = [CGSize](count: labelCount, repeatedValue: CGSize())
             }
             
             if (calculatedLabelBreakPoints.count != labelCount)
             {
-                calculatedLabelBreakPoints = [Bool](repeating: false, count: labelCount)
+                calculatedLabelBreakPoints = [Bool](count: labelCount, repeatedValue: false)
             }
             
-            calculatedLineSizes.removeAll(keepingCapacity: true)
+            calculatedLineSizes.removeAll(keepCapacity: true)
             
             // Start calculating layout
             
@@ -431,7 +431,7 @@ open class ChartLegend: ChartComponentBase
                 // grouped forms have null labels
                 if (labels[i] != nil)
                 {
-                    calculatedLabelSizes[i] = (labels[i] as NSString!).size(attributes: labelAttrs)
+                    calculatedLabelSizes[i] = (labels[i] as NSString!).sizeWithAttributes(labelAttrs)
                     requiredWidth += drawingForm ? formToTextSpace + formSize : 0.0
                     requiredWidth += calculatedLabelSizes[i].width
                 }
@@ -490,7 +490,7 @@ open class ChartLegend: ChartComponentBase
     
     /// colors and labels that will be appended to the end of the auto calculated colors and labels after calculating the legend.
     /// (if the legend has already been calculated, you will need to call notifyDataSetChanged() to let the changes take effect)
-    open func setExtra(colors: [NSUIColor?], labels: [String?])
+    public func setExtra(colors colors: [NSUIColor?], labels: [String?])
     {
         self._extraLabels = labels
         self._extraColors = colors
@@ -503,7 +503,7 @@ open class ChartLegend: ChartComponentBase
     /// * A nil color will avoid drawing a form, and a clearColor will leave a space for the form.
     /// This will disable the feature that automatically calculates the legend labels and colors from the datasets.
     /// Call `resetCustom(...)` to re-enable automatic calculation (and then `notifyDataSetChanged()` is needed).
-    open func setCustom(colors: [NSUIColor?], labels: [String?])
+    public func setCustom(colors colors: [NSUIColor?], labels: [String?])
     {
         self.labels = labels
         self.colors = colors
@@ -511,14 +511,14 @@ open class ChartLegend: ChartComponentBase
     }
     
     /// Calling this will disable the custom legend labels (set by `setLegend(...)`). Instead, the labels will again be calculated automatically (after `notifyDataSetChanged()` is called).
-    open func resetCustom()
+    public func resetCustom()
     {
         _isLegendCustom = false
     }
     
     /// **default**: false (automatic legend)
     /// - returns: true if a custom legend labels and colors has been set
-    open var isLegendCustom: Bool
+    public var isLegendCustom: Bool
     {
         return _isLegendCustom
     }
@@ -526,14 +526,14 @@ open class ChartLegend: ChartComponentBase
     /// MARK: - ObjC compatibility
     
     /// colors that will be appended to the end of the colors array after calculating the legend.
-    open var extraColorsObjc: [NSObject] { return ChartUtils.bridgedObjCGetNSUIColorArray(swift: _extraColors); }
+    public var extraColorsObjc: [NSObject] { return ChartUtils.bridgedObjCGetNSUIColorArray(swift: _extraColors); }
     
     /// labels that will be appended to the end of the labels array after calculating the legend. a nil label will start a group.
-    open var extraLabelsObjc: [NSObject] { return ChartUtils.bridgedObjCGetStringArray(swift: _extraLabels); }
+    public var extraLabelsObjc: [NSObject] { return ChartUtils.bridgedObjCGetStringArray(swift: _extraLabels); }
     
     /// the legend colors array, each color is for the form drawn at the same index
     /// (ObjC bridging functions, as Swift 1.2 does not bridge optionals in array to `NSNull`s)
-    open var colorsObjc: [NSObject]
+    public var colorsObjc: [NSObject]
     {
         get { return ChartUtils.bridgedObjCGetNSUIColorArray(swift: colors); }
         set { self.colors = ChartUtils.bridgedObjCGetNSUIColorArray(objc: newValue); }
@@ -541,7 +541,7 @@ open class ChartLegend: ChartComponentBase
     
     // the legend text array. a nil label will start a group.
     /// (ObjC bridging functions, as Swift 1.2 does not bridge optionals in array to `NSNull`s)
-    open var labelsObjc: [NSObject]
+    public var labelsObjc: [NSObject]
     {
         get { return ChartUtils.bridgedObjCGetStringArray(swift: labels); }
         set { self.labels = ChartUtils.bridgedObjCGetStringArray(objc: newValue); }
@@ -549,7 +549,7 @@ open class ChartLegend: ChartComponentBase
     
     /// colors and labels that will be appended to the end of the auto calculated colors and labels after calculating the legend.
     /// (if the legend has already been calculated, you will need to call `notifyDataSetChanged()` to let the changes take effect)
-    open func setExtra(colors: [NSObject], labels: [NSObject])
+    public func setExtra(colors colors: [NSObject], labels: [NSObject])
     {
         if (colors.count != labels.count)
         {
@@ -567,7 +567,7 @@ open class ChartLegend: ChartComponentBase
     /// * A nil color will avoid drawing a form, and a clearColor will leave a space for the form.
     /// This will disable the feature that automatically calculates the legend labels and colors from the datasets.
     /// Call `resetLegendToAuto(...)` to re-enable automatic calculation, and then if needed - call `notifyDataSetChanged()` on the chart to make it refresh the data.
-    open func setCustom(colors: [NSObject], labels: [NSObject])
+    public func setCustom(colors colors: [NSObject], labels: [NSObject])
     {
         if (colors.count != labels.count)
         {

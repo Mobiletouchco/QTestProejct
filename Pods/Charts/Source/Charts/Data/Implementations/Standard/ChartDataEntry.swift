@@ -14,16 +14,16 @@
 
 import Foundation
 
-open class ChartDataEntry: NSObject
+public class ChartDataEntry: NSObject
 {
     /// the actual value (y axis)
-    open var value = Double(0.0)
+    public var value = Double(0.0)
     
     /// the index on the x-axis
-    open var xIndex = Int(0)
+    public var xIndex = Int(0)
     
     /// optional spot for additional data this Entry represents
-    open var data: AnyObject?
+    public var data: AnyObject?
     
     public override required init()
     {
@@ -49,29 +49,29 @@ open class ChartDataEntry: NSObject
     
     // MARK: NSObject
     
-    open override func isEqual(_ object: Any?) -> Bool
+    public override func isEqual(object: AnyObject?) -> Bool
     {
-        if (object == nil)
+        if (object === nil)
         {
             return false
         }
         
-        if (!(object! as AnyObject).isKind(of: type(of: self)))
+        if (!object!.isKindOfClass(self.dynamicType))
         {
             return false
         }
         
-        if ((object! as AnyObject).data !== data && !((object! as AnyObject).data??.isEqual(self.data))!)
+        if (object!.data !== data && !object!.data.isEqual(self.data))
         {
             return false
         }
         
-        if ((object! as AnyObject).xIndex != xIndex)
+        if (object!.xIndex != xIndex)
         {
             return false
         }
         
-        if (fabs((object! as AnyObject).value - value) > 0.00001)
+        if (fabs(object!.value - value) > 0.00001)
         {
             return false
         }
@@ -81,16 +81,16 @@ open class ChartDataEntry: NSObject
     
     // MARK: NSObject
     
-    open override var description: String
+    public override var description: String
     {
         return "ChartDataEntry, xIndex: \(xIndex), value \(value)"
     }
     
     // MARK: NSCopying
     
-    open func copyWithZone(_ zone: NSZone?) -> AnyObject
+    public func copyWithZone(zone: NSZone) -> AnyObject
     {
-        let copy = type(of: self).init()
+        let copy = self.dynamicType.init()
         
         copy.value = value
         copy.xIndex = xIndex
@@ -107,7 +107,7 @@ public func ==(lhs: ChartDataEntry, rhs: ChartDataEntry) -> Bool
         return true
     }
     
-    if (!lhs.isKind(of: type(of: rhs)))
+    if (!lhs.isKindOfClass(rhs.dynamicType))
     {
         return false
     }

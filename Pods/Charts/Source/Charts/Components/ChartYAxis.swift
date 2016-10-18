@@ -23,41 +23,41 @@ import CoreGraphics
 /// Class representing the y-axis labels settings and its entries.
 /// Be aware that not all features the YLabels class provides are suitable for the RadarChart.
 /// Customizations that affect the value range of the axis need to be applied before setting data for the chart.
-open class ChartYAxis: ChartAxisBase
+public class ChartYAxis: ChartAxisBase
 {
     @objc(YAxisLabelPosition)
     public enum LabelPosition: Int
     {
-        case outsideChart
-        case insideChart
+        case OutsideChart
+        case InsideChart
     }
     
     ///  Enum that specifies the axis a DataSet should be plotted against, either Left or Right.
     @objc
     public enum AxisDependency: Int
     {
-        case left
-        case right
+        case Left
+        case Right
     }
     
-    open var entries = [Double]()
-    open var entryCount: Int { return entries.count; }
+    public var entries = [Double]()
+    public var entryCount: Int { return entries.count; }
     
     /// the number of y-label entries the y-labels should have, default 6
-    fileprivate var _labelCount = Int(6)
+    private var _labelCount = Int(6)
     
     /// indicates if the top y-label entry is drawn or not
-    open var drawTopYLabelEntryEnabled = true
+    public var drawTopYLabelEntryEnabled = true
     
     /// if true, the y-labels show only the minimum and maximum value
-    open var showOnlyMinMaxEnabled = false
+    public var showOnlyMinMaxEnabled = false
     
     /// flag that indicates if the axis is inverted or not
-    open var inverted = false
+    public var inverted = false
     
     /// This property is deprecated - Use `axisMinValue` instead.
-    @available(*, deprecated: 1.0, message: "Use axisMinValue instead.")
-    open var startAtZeroEnabled: Bool
+    @available(*, deprecated=1.0, message="Use axisMinValue instead.")
+    public var startAtZeroEnabled: Bool
     {
         get
         {
@@ -77,67 +77,67 @@ open class ChartYAxis: ChartAxisBase
     }
     
     /// if true, the set number of y-labels will be forced
-    open var forceLabelsEnabled = false
+    public var forceLabelsEnabled = false
 
     /// flag that indicates if the zero-line should be drawn regardless of other grid lines
-    open var drawZeroLineEnabled = false
+    public var drawZeroLineEnabled = false
     
     /// Color of the zero line
-    open var zeroLineColor: NSUIColor? = NSUIColor.gray
+    public var zeroLineColor: NSUIColor? = NSUIColor.grayColor()
     
     /// Width of the zero line
-    open var zeroLineWidth: CGFloat = 1.0
+    public var zeroLineWidth: CGFloat = 1.0
     
     /// This is how much (in pixels) into the dash pattern are we starting from.
-    open var zeroLineDashPhase = CGFloat(0.0)
+    public var zeroLineDashPhase = CGFloat(0.0)
     
     /// This is the actual dash pattern.
     /// I.e. [2, 3] will paint [--   --   ]
     /// [1, 3, 4, 2] will paint [-   ----  -   ----  ]
-    open var zeroLineDashLengths: [CGFloat]?
+    public var zeroLineDashLengths: [CGFloat]?
     
     /// the formatter used to customly format the y-labels
-    open var valueFormatter: NumberFormatter?
+    public var valueFormatter: NSNumberFormatter?
     
     /// the formatter used to customly format the y-labels
-    internal var _defaultValueFormatter = NumberFormatter()
+    internal var _defaultValueFormatter = NSNumberFormatter()
 
     /// axis space from the largest value to the top in percent of the total axis range
-    open var spaceTop = CGFloat(0.1)
+    public var spaceTop = CGFloat(0.1)
 
     /// axis space from the smallest value to the bottom in percent of the total axis range
-    open var spaceBottom = CGFloat(0.1)
+    public var spaceBottom = CGFloat(0.1)
     
     /// the position of the y-labels relative to the chart
-    open var labelPosition = LabelPosition.outsideChart
+    public var labelPosition = LabelPosition.OutsideChart
     
     /// the side this axis object represents
-    fileprivate var _axisDependency = AxisDependency.left
+    private var _axisDependency = AxisDependency.Left
     
     /// the minimum width that the axis should take
     /// 
     /// **default**: 0.0
-    open var minWidth = CGFloat(0)
+    public var minWidth = CGFloat(0)
     
     /// the maximum width that the axis can take.
     /// use Infinity for disabling the maximum.
     /// 
     /// **default**: CGFloat.infinity
-    open var maxWidth = CGFloat(CGFloat.infinity)
+    public var maxWidth = CGFloat(CGFloat.infinity)
     
     /// When true, axis labels are controlled by the `granularity` property.
     /// When false, axis values could possibly be repeated.
     /// This could happen if two adjacent axis values are rounded to same value.
     /// If using granularity this could be avoided by having fewer axis values visible.
-    open var granularityEnabled = false
+    public var granularityEnabled = false
     
-    fileprivate var _granularity = Double(1.0)
+    private var _granularity = Double(1.0)
     
     /// The minimum interval between axis values.
     /// This can be used to avoid label duplicating when zooming in.
     ///
     /// **default**: 1.0
-    open var granularity: Double
+    public var granularity: Double
     {
         get
         {
@@ -176,12 +176,12 @@ open class ChartYAxis: ChartAxisBase
         self.yOffset = 0.0
     }
     
-    open var axisDependency: AxisDependency
+    public var axisDependency: AxisDependency
     {
         return _axisDependency
     }
     
-    open func setLabelCount(_ count: Int, force: Bool)
+    public func setLabelCount(count: Int, force: Bool)
     {
         _labelCount = count
         
@@ -202,7 +202,7 @@ open class ChartYAxis: ChartAxisBase
     /// min = 2,
     /// default = 6,
     /// be aware that this number is not fixed and can only be approximated
-    open var labelCount: Int
+    public var labelCount: Int
     {
         get
         {
@@ -214,22 +214,22 @@ open class ChartYAxis: ChartAxisBase
         }
     }
     
-    open func requiredSize() -> CGSize
+    public func requiredSize() -> CGSize
     {
         let label = getLongestLabel() as NSString
-        var size = label.size(attributes: [NSFontAttributeName: labelFont])
+        var size = label.sizeWithAttributes([NSFontAttributeName: labelFont])
         size.width += xOffset * 2.0
         size.height += yOffset * 2.0
         size.width = max(minWidth, min(size.width, maxWidth > 0.0 ? maxWidth : size.width))
         return size
     }
     
-    open func getRequiredHeightSpace() -> CGFloat
+    public func getRequiredHeightSpace() -> CGFloat
     {
         return requiredSize().height
     }
 
-    open override func getLongestLabel() -> String
+    public override func getLongestLabel() -> String
     {
         var longest = ""
         
@@ -247,20 +247,20 @@ open class ChartYAxis: ChartAxisBase
     }
 
     /// - returns: the formatted y-label at the specified index. This will either use the auto-formatter or the custom formatter (if one is set).
-    open func getFormattedLabel(_ index: Int) -> String
+    public func getFormattedLabel(index: Int) -> String
     {
         if (index < 0 || index >= entries.count)
         {
             return ""
         }
         
-        return (valueFormatter ?? _defaultValueFormatter).string(from: entries[index])!
+        return (valueFormatter ?? _defaultValueFormatter).stringFromNumber(entries[index])!
     }
     
     /// - returns: true if this axis needs horizontal offset, false if no offset is needed.
-    open var needsOffset: Bool
+    public var needsOffset: Bool
     {
-        if (isEnabled && isDrawLabelsEnabled && labelPosition == .outsideChart)
+        if (isEnabled && isDrawLabelsEnabled && labelPosition == .OutsideChart)
         {
             return true
         }
@@ -270,23 +270,23 @@ open class ChartYAxis: ChartAxisBase
         }
     }
     
-    open var isInverted: Bool { return inverted; }
+    public var isInverted: Bool { return inverted; }
     
     /// This is deprecated now, use `axisMinValue`
-    @available(*, deprecated: 1.0, message: "Use axisMinValue instead.")
-    open var isStartAtZeroEnabled: Bool { return startAtZeroEnabled }
+    @available(*, deprecated=1.0, message="Use axisMinValue instead.")
+    public var isStartAtZeroEnabled: Bool { return startAtZeroEnabled }
 
     /// - returns: true if focing the y-label count is enabled. Default: false
-    open var isForceLabelsEnabled: Bool { return forceLabelsEnabled }
+    public var isForceLabelsEnabled: Bool { return forceLabelsEnabled }
 
-    open var isShowOnlyMinMaxEnabled: Bool { return showOnlyMinMaxEnabled; }
+    public var isShowOnlyMinMaxEnabled: Bool { return showOnlyMinMaxEnabled; }
     
-    open var isDrawTopYLabelEntryEnabled: Bool { return drawTopYLabelEntryEnabled; }
+    public var isDrawTopYLabelEntryEnabled: Bool { return drawTopYLabelEntryEnabled; }
     
     /// Calculates the minimum, maximum and range values of the YAxis with the given minimum and maximum values from the chart data.
     /// - parameter dataMin: the y-min value according to chart data
     /// - parameter dataMax: the y-max value according to chart
-    open func calculate(min dataMin: Double, max dataMax: Double)
+    public func calculate(min dataMin: Double, max dataMax: Double)
     {
         // if custom, use value as is, else use data value
         var min = _customAxisMin ? _axisMinimum : dataMin

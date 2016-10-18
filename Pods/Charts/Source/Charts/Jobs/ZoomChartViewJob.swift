@@ -16,11 +16,11 @@ import CoreGraphics
     import UIKit
 #endif
 
-open class ZoomChartViewJob: ChartViewPortJob
+public class ZoomChartViewJob: ChartViewPortJob
 {
     internal var scaleX: CGFloat = 0.0
     internal var scaleY: CGFloat = 0.0
-    internal var axisDependency: ChartYAxis.AxisDependency = ChartYAxis.AxisDependency.left
+    internal var axisDependency: ChartYAxis.AxisDependency = ChartYAxis.AxisDependency.Left
     
     public init(
         viewPortHandler: ChartViewPortHandler,
@@ -44,12 +44,12 @@ open class ZoomChartViewJob: ChartViewPortJob
         self.axisDependency = axis
     }
     
-    open override func doJob()
+    public override func doJob()
     {
         guard let
             viewPortHandler = viewPortHandler,
-            let transformer = transformer,
-            let view = view
+            transformer = transformer,
+            view = view
             else { return }
         
         var matrix = viewPortHandler.setZoom(scaleX: scaleX, scaleY: scaleY)

@@ -13,19 +13,19 @@
 
 import Foundation
 
-open class CandleChartDataEntry: ChartDataEntry
+public class CandleChartDataEntry: ChartDataEntry
 {
     /// shadow-high value
-    open var high = Double(0.0)
+    public var high = Double(0.0)
     
     /// shadow-low value
-    open var low = Double(0.0)
+    public var low = Double(0.0)
     
     /// close value
-    open var close = Double(0.0)
+    public var close = Double(0.0)
     
     /// open value
-    open var open = Double(0.0)
+    public var open = Double(0.0)
     
     public required init()
     {
@@ -53,19 +53,19 @@ open class CandleChartDataEntry: ChartDataEntry
     }
     
     /// - returns: the overall range (difference) between shadow-high and shadow-low.
-    open var shadowRange: Double
+    public var shadowRange: Double
     {
         return abs(high - low)
     }
     
     /// - returns: the body size (difference between open and close).
-    open var bodyRange: Double
+    public var bodyRange: Double
     {
         return abs(open - close)
     }
     
     /// the center value of the candle. (Middle value between high and low)
-    open override var value: Double
+    public override var value: Double
     {
         get
         {
@@ -79,7 +79,7 @@ open class CandleChartDataEntry: ChartDataEntry
     
     // MARK: NSCopying
     
-    open override func copyWithZone(_ zone: NSZone?) -> AnyObject
+    public override func copyWithZone(zone: NSZone) -> AnyObject
     {
         let copy = super.copyWithZone(zone) as! CandleChartDataEntry
         copy.high = high

@@ -19,9 +19,9 @@ import CoreGraphics
 #endif
 
 
-open class ChartXAxisRendererRadarChart: ChartXAxisRenderer
+public class ChartXAxisRendererRadarChart: ChartXAxisRenderer
 {
-    open weak var chart: RadarChartView?
+    public weak var chart: RadarChartView?
     
     public init(viewPortHandler: ChartViewPortHandler, xAxis: ChartXAxis, chart: RadarChartView)
     {
@@ -30,11 +30,11 @@ open class ChartXAxisRendererRadarChart: ChartXAxisRenderer
         self.chart = chart
     }
     
-    open override func renderAxisLabels(context: CGContext)
+    public override func renderAxisLabels(context context: CGContext)
     {
         guard let
             xAxis = xAxis,
-            let chart = chart
+            chart = chart
             else { return }
         
         if (!xAxis.isEnabled || !xAxis.isDrawLabelsEnabled)
@@ -55,7 +55,7 @@ open class ChartXAxisRendererRadarChart: ChartXAxisRenderer
         let center = chart.centerOffsets
         
         let modulus = xAxis.axisLabelModulus
-        for i in stride(from: 0, to: xAxis.values.count, by: modulus)
+        for i in 0.stride(to: xAxis.values.count, by: modulus)
         {
             let label = xAxis.values[i]
             
@@ -64,7 +64,7 @@ open class ChartXAxisRendererRadarChart: ChartXAxisRenderer
                 continue
             }
             
-            let angle = (sliceangle * CGFloat(i) + chart.rotationAngle).truncatingRemainder(dividingBy: 360.0)
+            let angle = (sliceangle * CGFloat(i) + chart.rotationAngle) % 360.0
             
             let p = ChartUtils.getPosition(center: center, dist: CGFloat(chart.yRange) * factor + xAxis.labelRotatedWidth / 2.0, angle: angle)
             
@@ -72,7 +72,7 @@ open class ChartXAxisRendererRadarChart: ChartXAxisRenderer
         }
     }
     
-    open func drawLabel(context: CGContext, label: String, xIndex: Int, x: CGFloat, y: CGFloat, attributes: [String: NSObject], anchor: CGPoint, angleRadians: CGFloat)
+    public func drawLabel(context context: CGContext, label: String, xIndex: Int, x: CGFloat, y: CGFloat, attributes: [String: NSObject], anchor: CGPoint, angleRadians: CGFloat)
     {
         guard let xAxis = xAxis else { return }
         
@@ -80,7 +80,7 @@ open class ChartXAxisRendererRadarChart: ChartXAxisRenderer
         ChartUtils.drawText(context: context, text: formattedLabel, point: CGPoint(x: x, y: y), attributes: attributes, anchor: anchor, angleRadians: angleRadians)
     }
     
-    open override func renderLimitLines(context: CGContext)
+    public override func renderLimitLines(context context: CGContext)
     {
         /// XAxis LimitLines on RadarChart not yet supported.
     }

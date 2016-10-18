@@ -1,50 +1,55 @@
 PODS:
-  - Alamofire (4.0.0)
+  - AFNetworking (3.1.0):
+    - AFNetworking/NSURLSession (= 3.1.0)
+    - AFNetworking/Reachability (= 3.1.0)
+    - AFNetworking/Security (= 3.1.0)
+    - AFNetworking/Serialization (= 3.1.0)
+    - AFNetworking/UIKit (= 3.1.0)
+  - AFNetworking/NSURLSession (3.1.0):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.1.0)
+  - AFNetworking/Security (3.1.0)
+  - AFNetworking/Serialization (3.1.0)
+  - AFNetworking/UIKit (3.1.0):
+    - AFNetworking/NSURLSession
+  - Charts (2.3.0):
+    - Charts/Core (= 2.3.0)
+  - Charts/Core (2.3.0)
   - HexColors (2.3.0)
-  - IQKeyboardManagerSwift (4.0.6)
+  - IQKeyboardManager (4.0.6)
   - MBProgressHUD (1.0.0)
   - MFSideMenu (0.5.5)
-  - PNChart (0.8.9):
-    - UICountingLabel (~> 1.2.0)
-  - SwiftCharts (0.4)
   - TSMessages (0.9.13):
     - HexColors (~> 2.3.0)
-  - UICountingLabel (1.2.0)
 
 DEPENDENCIES:
-  - Alamofire (~> 4.0)
-  - IQKeyboardManagerSwift
+  - AFNetworking (~> 3.0)
+  - Charts
+  - IQKeyboardManager
   - MBProgressHUD (~> 1.0.0)
   - MFSideMenu
-  - PNChart
-  - SwiftCharts (from `https://github.com/i-schuetz/SwiftCharts.git`)
   - TSMessages (from `https://github.com/KrauseFx/TSMessages.git`)
 
 EXTERNAL SOURCES:
-  SwiftCharts:
-    :git: https://github.com/i-schuetz/SwiftCharts.git
   TSMessages:
     :git: https://github.com/KrauseFx/TSMessages.git
 
 CHECKOUT OPTIONS:
-  SwiftCharts:
-    :commit: 1705b493b9239cbeb74c484eb9fa9694e42e5b7d
-    :git: https://github.com/i-schuetz/SwiftCharts.git
   TSMessages:
     :commit: e63f23304f781dcadbac31e6d338f3105fb3cd78
     :git: https://github.com/KrauseFx/TSMessages.git
 
 SPEC CHECKSUMS:
-  Alamofire: fef59f00388f267e52d9b432aa5d93dc97190f14
+  AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  Charts: 55d7fd9af175b500208601bea872f0fc72c1d19e
   HexColors: 6ad3947c3447a055a3aa8efa859def096351fe5f
-  IQKeyboardManagerSwift: b3015e819559ca76381f87a0833f44d178564603
+  IQKeyboardManager: c52debb1967799ae7addb98eab0cf328083a874f
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   MFSideMenu: 268122e6894f2747fc3a2b48578100b232506c60
-  PNChart: 84774d225c2126ded6c93d4dbe6ae98c3a73c2d2
-  SwiftCharts: 84b43d9d70b791459ff5f50ae5a6704326de309d
   TSMessages: 6e403b790139636c15ab4f51946537095e03e79c
-  UICountingLabel: 1db4e7d023e1762171eb226d6dff47a7a84f27aa
 
-PODFILE CHECKSUM: 95e699f8ce367e8f64657e12e27424bed7a51c32
+PODFILE CHECKSUM: e559996d4ac8fe60a77e4f8c041bd92def857d16
 
 COCOAPODS: 1.0.1

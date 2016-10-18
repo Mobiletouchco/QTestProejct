@@ -13,16 +13,16 @@
 
 import Foundation
 
-open class BarChartDataEntry: ChartDataEntry
+public class BarChartDataEntry: ChartDataEntry
 {
     /// the values the stacked barchart holds
-    fileprivate var _values: [Double]?
+    private var _values: [Double]?
     
     /// the sum of all negative values this entry (if stacked) contains
-    fileprivate var _negativeSum: Double = 0.0
+    private var _negativeSum: Double = 0.0
     
     /// the sum of all positive values this entry (if stacked) contains
-    fileprivate var _positiveSum: Double = 0.0
+    private var _positiveSum: Double = 0.0
     
     public required init()
     {
@@ -46,7 +46,7 @@ open class BarChartDataEntry: ChartDataEntry
     /// Constructor for stacked bar entries.
     public init(values: [Double], xIndex: Int, label: String)
     {
-        super.init(value: BarChartDataEntry.calcSum(values), xIndex: xIndex, data: label as AnyObject?)
+        super.init(value: BarChartDataEntry.calcSum(values), xIndex: xIndex, data: label)
         self.values = values
     }
     
@@ -56,7 +56,7 @@ open class BarChartDataEntry: ChartDataEntry
         super.init(value: value, xIndex: xIndex, data: data)
     }
     
-    open func getBelowSum(_ stackIndex :Int) -> Double
+    public func getBelowSum(stackIndex :Int) -> Double
     {
         if (values == nil)
         {
@@ -76,18 +76,18 @@ open class BarChartDataEntry: ChartDataEntry
     }
     
     /// - returns: the sum of all negative values this entry (if stacked) contains. (this is a positive number)
-    open var negativeSum: Double
+    public var negativeSum: Double
     {
         return _negativeSum
     }
     
     /// - returns: the sum of all positive values this entry (if stacked) contains.
-    open var positiveSum: Double
+    public var positiveSum: Double
     {
         return _positiveSum
     }
 
-    open func calcPosNegSum()
+    public func calcPosNegSum()
     {
         if _values == nil
         {
@@ -118,10 +118,10 @@ open class BarChartDataEntry: ChartDataEntry
     // MARK: Accessors
     
     /// the values the stacked barchart holds
-    open var isStacked: Bool { return _values != nil }
+    public var isStacked: Bool { return _values != nil }
     
     /// the values the stacked barchart holds
-    open var values: [Double]?
+    public var values: [Double]?
     {
         get { return self._values }
         set
@@ -134,7 +134,7 @@ open class BarChartDataEntry: ChartDataEntry
     
     // MARK: NSCopying
     
-    open override func copyWithZone(_ zone: NSZone?) -> AnyObject
+    public override func copyWithZone(zone: NSZone) -> AnyObject
     {
         let copy = super.copyWithZone(zone) as! BarChartDataEntry
         copy._values = _values
@@ -147,7 +147,7 @@ open class BarChartDataEntry: ChartDataEntry
     ///
     /// - parameter vals:
     /// - returns:
-    fileprivate static func calcSum(_ vals: [Double]?) -> Double
+    private static func calcSum(vals: [Double]?) -> Double
     {
         if vals == nil
         {

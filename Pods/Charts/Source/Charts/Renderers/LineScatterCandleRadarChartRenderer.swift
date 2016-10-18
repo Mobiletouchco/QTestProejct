@@ -15,7 +15,7 @@ import Foundation
 import CoreGraphics
 
 
-open class LineScatterCandleRadarChartRenderer: ChartDataRendererBase
+public class LineScatterCandleRadarChartRenderer: ChartDataRendererBase
 {
     public override init(animator: ChartAnimator?, viewPortHandler: ChartViewPortHandler)
     {
@@ -27,24 +27,24 @@ open class LineScatterCandleRadarChartRenderer: ChartDataRendererBase
     /// :param: points
     /// :param: horizontal
     /// :param: vertical
-    open func drawHighlightLines(context: CGContext, point: CGPoint, set: ILineScatterCandleRadarChartDataSet)
+    public func drawHighlightLines(context context: CGContext, point: CGPoint, set: ILineScatterCandleRadarChartDataSet)
     {
         // draw vertical highlight lines
         if set.isVerticalHighlightIndicatorEnabled
         {
-            context.beginPath()
-            context.move(to: CGPoint(x: point.x, y: viewPortHandler.contentTop))
-            context.addLine(to: CGPoint(x: point.x, y: viewPortHandler.contentBottom))
-            context.strokePath()
+            CGContextBeginPath(context)
+            CGContextMoveToPoint(context, point.x, viewPortHandler.contentTop)
+            CGContextAddLineToPoint(context, point.x, viewPortHandler.contentBottom)
+            CGContextStrokePath(context)
         }
         
         // draw horizontal highlight lines
         if set.isHorizontalHighlightIndicatorEnabled
         {
-            context.beginPath()
-            context.move(to: CGPoint(x: viewPortHandler.contentLeft, y: point.y))
-            context.addLine(to: CGPoint(x: viewPortHandler.contentRight, y: point.y))
-            context.strokePath()
+            CGContextBeginPath(context)
+            CGContextMoveToPoint(context, viewPortHandler.contentLeft, point.y)
+            CGContextAddLineToPoint(context, viewPortHandler.contentRight, point.y)
+            CGContextStrokePath(context)
         }
     }
 }

@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="YW4-mY-HrR">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,7 +10,7 @@
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="LoginViewController" id="BYZ-38-t0r" customClass="LoginViewController" customModule="QTest" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" id="BYZ-38-t0r" customClass="LoginViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -255,7 +256,7 @@
         <!--Register View Controller-->
         <scene sceneID="YYd-GQ-MeU">
             <objects>
-                <viewController id="olH-j1-B86" customClass="RegisterViewController" customModule="QTest" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="olH-j1-B86" customClass="RegisterViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="mZf-Aw-AgT"/>
                         <viewControllerLayoutGuide type="bottom" id="S3K-3k-AEY"/>
@@ -663,7 +664,7 @@
         <!--Welcome View Controller-->
         <scene sceneID="LDB-Ve-eJN">
             <objects>
-                <viewController storyboardIdentifier="WelcomeViewController" id="W8f-We-ekD" customClass="WelcomeViewController" customModule="QTest" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WelcomeViewController" id="W8f-We-ekD" customClass="WelcomeViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Y1m-PF-Khl"/>
                         <viewControllerLayoutGuide type="bottom" id="ZIG-yL-TwP"/>
@@ -812,7 +813,7 @@
         <!--Question View Controller-->
         <scene sceneID="ZBv-7W-MYv">
             <objects>
-                <viewController storyboardIdentifier="QuestionViewController" id="XaM-1d-ydQ" customClass="QuestionViewController" customModule="QTest" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="QuestionViewController" id="XaM-1d-ydQ" customClass="QuestionViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="lG2-VH-KXp"/>
                         <viewControllerLayoutGuide type="bottom" id="ByP-Lr-wi2"/>
@@ -976,7 +977,7 @@
         <!--Result View Controller-->
         <scene sceneID="1g8-5g-QVX">
             <objects>
-                <viewController storyboardIdentifier="ResultViewController" id="i7z-qs-bkW" customClass="ResultViewController" customModule="QTest" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ResultViewController" id="i7z-qs-bkW" customClass="ResultViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="80B-Yt-UXf"/>
                         <viewControllerLayoutGuide type="bottom" id="dCd-pA-aYJ"/>
@@ -986,11 +987,23 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="qtest_background" translatesAutoresizingMaskIntoConstraints="NO" id="Quu-Em-KxH"/>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ug5-5p-jUK">
+                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ug5-5p-jUK" customClass="BarChartView" customModule="Charts">
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B5H-MW-DKT">
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pieImage" translatesAutoresizingMaskIntoConstraints="NO" id="D0X-jq-cVv">
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="D0X-jq-cVv" secondAttribute="height" multiplier="300:259" id="vwc-B9-uz6"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="D0X-jq-cVv" firstAttribute="centerX" secondItem="B5H-MW-DKT" secondAttribute="centerX" id="PeO-We-C2R"/>
+                                    <constraint firstAttribute="bottom" secondItem="D0X-jq-cVv" secondAttribute="bottom" constant="100" id="Tfi-Et-6Vq"/>
+                                    <constraint firstItem="D0X-jq-cVv" firstAttribute="top" secondItem="B5H-MW-DKT" secondAttribute="top" constant="40" id="kqF-aj-XBJ"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1010,8 +1023,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="barChartView" destination="ug5-5p-jUK" id="3Tz-5R-wzB"/>
-                        <outlet property="pieChartView" destination="B5H-MW-DKT" id="KZU-1t-ckS"/>
+                        <outlet property="barChartView" destination="ug5-5p-jUK" id="asa-qn-s1E"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tlE-7o-jdB" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1021,7 +1033,7 @@
         <!--Lunch Screen Controller-->
         <scene sceneID="zf6-FB-yVM">
             <objects>
-                <viewController id="mlk-4N-jZp" customClass="LunchScreenController" customModule="QTest" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="mlk-4N-jZp" customClass="LunchScreenController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gRH-BT-lNN"/>
                         <viewControllerLayoutGuide type="bottom" id="bCW-So-jol"/>
@@ -1057,10 +1069,11 @@
     <resources>
         <image name="applogo" width="489" height="200"/>
         <image name="deselected" width="30" height="30"/>
+        <image name="pieImage" width="300" height="259"/>
         <image name="qtest_background" width="768" height="1024"/>
         <image name="selected" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="1un-Ax-t5j"/>
+        <segue reference="f0m-Be-uOg"/>
     </inferredMetricsTieBreakers>
 </document>

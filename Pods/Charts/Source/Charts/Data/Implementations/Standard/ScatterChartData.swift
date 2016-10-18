@@ -14,7 +14,7 @@
 import Foundation
 import CoreGraphics
 
-open class ScatterChartData: BarLineScatterCandleBubbleChartData
+public class ScatterChartData: BarLineScatterCandleBubbleChartData
 {
     public override init()
     {
@@ -32,7 +32,7 @@ open class ScatterChartData: BarLineScatterCandleBubbleChartData
     }
     
     /// - returns: the maximum shape-size across all DataSets.
-    open func getGreatestShapeSize() -> CGFloat
+    public func getGreatestShapeSize() -> CGFloat
     {
         var max = CGFloat(0.0)
         

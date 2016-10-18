@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "35E07C3E1DAE4B4B0083173C"
+               BlueprintIdentifier = "353ED23C1DB6602B00CEDB4F"
                BuildableName = "QTest.app"
                BlueprintName = "QTest"
                ReferencedContainer = "container:QTest.xcodeproj">
@@ -32,7 +32,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "35E07C3E1DAE4B4B0083173C"
+            BlueprintIdentifier = "353ED23C1DB6602B00CEDB4F"
             BuildableName = "QTest.app"
             BlueprintName = "QTest"
             ReferencedContainer = "container:QTest.xcodeproj">
@@ -55,7 +55,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "35E07C3E1DAE4B4B0083173C"
+            BlueprintIdentifier = "353ED23C1DB6602B00CEDB4F"
             BuildableName = "QTest.app"
             BlueprintName = "QTest"
             ReferencedContainer = "container:QTest.xcodeproj">
@@ -74,7 +74,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "35E07C3E1DAE4B4B0083173C"
+            BlueprintIdentifier = "353ED23C1DB6602B00CEDB4F"
             BuildableName = "QTest.app"
             BlueprintName = "QTest"
             ReferencedContainer = "container:QTest.xcodeproj">
