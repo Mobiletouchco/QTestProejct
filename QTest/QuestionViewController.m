@@ -120,7 +120,7 @@
 
 }
 - (IBAction)nextAct:(UIButton*)sender {
-    index = 90;
+//    index = 90;
     [self requestForQuestion];
 }
 
