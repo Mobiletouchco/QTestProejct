@@ -110,7 +110,7 @@ class QuestionViewController: UIViewController {
     }
     
     @IBAction func nextAct(_ sender: UIButton) {
-        index = 90
+//        index = 90
         requestForQuestion()
     }
     
