@@ -156,7 +156,7 @@ class ResultViewController: UIViewController {
                     self.results.add(Category(info as! NSDictionary))
                 }
                 self.createBarChart()
-                self.createPieChart()
+//                self.createPieChart()
                 return
             }
             
