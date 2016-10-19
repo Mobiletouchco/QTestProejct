@@ -10,4 +10,7 @@
 
 @interface RegisterViewController : UIViewController
 
+
+@property (nonatomic, assign) BOOL isForUpdate;
+
 @end

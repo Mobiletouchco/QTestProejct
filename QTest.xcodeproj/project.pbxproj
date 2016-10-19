@@ -23,6 +23,7 @@
 		353ED2771DB6617B00CEDB4F /* LunchScreenController.m in Sources */ = {isa = PBXBuildFile; fileRef = 353ED2761DB6617B00CEDB4F /* LunchScreenController.m */; };
 		353ED27A1DB6631E00CEDB4F /* MenuItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 353ED2791DB6631E00CEDB4F /* MenuItemsViewController.m */; };
 		663615E45F695A150EA332B5 /* Pods_QTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00842FA5ADC0AF20966DA874 /* Pods_QTest.framework */; };
+		B045CE511DB740E500ED1D07 /* ForgetPassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B045CE501DB740E500ED1D07 /* ForgetPassViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,8 @@
 		353ED2791DB6631E00CEDB4F /* MenuItemsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuItemsViewController.m; sourceTree = "<group>"; };
 		97F0A011F4418B6C4D5007AA /* Pods-QTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QTest.debug.xcconfig"; path = "Pods/Target Support Files/Pods-QTest/Pods-QTest.debug.xcconfig"; sourceTree = "<group>"; };
 		9867F28AFA7D2791BD3BAC21 /* Pods-QTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QTest.release.xcconfig"; path = "Pods/Target Support Files/Pods-QTest/Pods-QTest.release.xcconfig"; sourceTree = "<group>"; };
+		B045CE4F1DB740E500ED1D07 /* ForgetPassViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgetPassViewController.h; sourceTree = "<group>"; };
+		B045CE501DB740E500ED1D07 /* ForgetPassViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgetPassViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +151,8 @@
 				353ED2731DB6616A00CEDB4F /* ResultViewController.m */,
 				353ED2781DB6631E00CEDB4F /* MenuItemsViewController.h */,
 				353ED2791DB6631E00CEDB4F /* MenuItemsViewController.m */,
+				B045CE4F1DB740E500ED1D07 /* ForgetPassViewController.h */,
+				B045CE501DB740E500ED1D07 /* ForgetPassViewController.m */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -291,6 +296,7 @@
 			files = (
 				353ED2451DB6602B00CEDB4F /* AppDelegate.m in Sources */,
 				353ED25B1DB6608400CEDB4F /* UserObject.m in Sources */,
+				B045CE511DB740E500ED1D07 /* ForgetPassViewController.m in Sources */,
 				353ED2651DB6611600CEDB4F /* LoginViewController.m in Sources */,
 				353ED2421DB6602B00CEDB4F /* main.m in Sources */,
 				353ED2741DB6616A00CEDB4F /* ResultViewController.m in Sources */,

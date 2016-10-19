@@ -52,6 +52,9 @@ static APIManager* sharedManger = nil;
         if ([[responseObject valueForKey:@"success"] boolValue]) {
             success(responseObject);
         }
+        else {
+            failure([responseObject valueForKey:@"msg"]);
+        }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         [hud hideAnimated:YES];
         failure(error.localizedDescription);

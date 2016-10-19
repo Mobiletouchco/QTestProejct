@@ -27,6 +27,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    if (_isForUpdate) {
+        UserObject *user = [UserObject sharedUser];
+        userNameFld.text = user.userName;
+        nameFld.text = user.firstName;
+        emailFld.text = user.email;
+        numberFld.text = user.contactNumber;
+        userNameFld.enabled = NO;
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -62,18 +71,31 @@
         return;
     }
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
-    [param setValue:[[UIDevice currentDevice] identifierForVendor].UUIDString forKey:@"device_id"];
-    [param setValue:@1 forKey:@"device_type"];
+    NSString *url = @"registration";
+    if (_isForUpdate) {
+        url = @"updateprofile";
+        [param setValue:[UserObject sharedUser].userId forKey:@"user_id"];
+    }
+    else {
+        [param setValue:[[UIDevice currentDevice] identifierForVendor].UUIDString forKey:@"device_id"];
+        [param setValue:@1 forKey:@"device_type"];
+    }
     [param setValue:emailFld.text forKey:@"email"];
     [param setValue:userNameFld.text forKey:@"user_name"];
     [param setValue:passwordFld.text forKey:@"password"];
     [param setValue:nameFld.text forKey:@"first_name"];
     [param setValue:numberFld.text forKey:@"contact_number"];
 
-    [[APIManager sharedManager] executePostRequestWith:@"registration" Parameters:param ForSuccess:^(id response) {
+    [[APIManager sharedManager] executePostRequestWith:url Parameters:param ForSuccess:^(id response) {
         if ([response valueForKey:@"results"]) {
             [[UserObject sharedUser] saveUserToLocalWithInfo:[response valueForKey:@"results"]];
-            [self performSegueWithIdentifier:@"WelcomeViewController" sender:nil];
+            if (_isForUpdate) {
+                [self goBack];
+                [TSMessage showNotificationWithTitle:[response valueForKey:@"msg"] type:TSMessageNotificationTypeSuccess];
+            }
+            else {
+                [self performSegueWithIdentifier:@"WelcomeViewController" sender:nil];
+            }
         }
 
     } ForFail:^(NSString *error) {

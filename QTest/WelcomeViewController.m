@@ -8,6 +8,7 @@
 
 #import "WelcomeViewController.h"
 #import "UserObject.h"
+#import "RegisterViewController.h"
 
 @interface WelcomeViewController () {
     __weak IBOutlet UILabel *fullNameLbl;
@@ -37,15 +38,15 @@
         [self goForward];
     }
 }
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
+#pragma mark - Navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"UpdateProfile"]) {
+        RegisterViewController *vc = segue.destinationViewController;
+        vc.isForUpdate = YES;
+    }
 }
-*/
+
 - (void)toggleSideMenu:(id)sender {
     [[UserObject sharedUser].container toggleRightSideMenuCompletion:nil];
 }
