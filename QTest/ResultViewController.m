@@ -93,26 +93,27 @@
     }];
 }
 
+- (void)sendingResult {
+    
+    [[APIManager sharedManager] sendResult:[self takeSnapshot] ForSuccess:^(id response) {
+        [TSMessage showNotificationWithTitle:[response valueForKey:@"msg"] type:TSMessageNotificationTypeSuccess];
+    } ForFail:^(NSString *error) {
+        [TSMessage showNotificationWithTitle:error type:TSMessageNotificationTypeError];
+    }];
+}
+
+- (UIImage *)takeSnapshot {
+    CGRect rect = [self.view bounds];
+    UIGraphicsBeginImageContextWithOptions(rect.size,YES,0.0f);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    [self.view.layer renderInContext:context];
+    UIImage *capturedImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return capturedImage;
+}
 - (void)createBarChart {
     
-    //    self.options = @[
-    //                     @{@"key": @"toggleValues", @"label": @"Toggle Values"},
-    //                     @{@"key": @"toggleHighlight", @"label": @"Toggle Highlight"},
-    //                     @{@"key": @"toggleHighlightArrow", @"label": @"Toggle Highlight Arrow"},
-    //                     @{@"key": @"animateX", @"label": @"Animate X"},
-    //                     @{@"key": @"animateY", @"label": @"Animate Y"},
-    //                     @{@"key": @"animateXY", @"label": @"Animate XY"},
-    //                     @{@"key": @"saveToGallery", @"label": @"Save to Camera Roll"},
-    //                     @{@"key": @"togglePinchZoom", @"label": @"Toggle PinchZoom"},
-    //                     @{@"key": @"toggleAutoScaleMinMax", @"label": @"Toggle auto scale min/max"},
-    //                     @{@"key": @"toggleData", @"label": @"Toggle Data"},
-    //                     @{@"key": @"toggleBarBorders", @"label": @"Show Bar Borders"},
-    //                     ];
-    
     _months = @[];
-//                //               @"Jan", @"Feb", @"Mar", @"Apr", @"May", @"Jun", @"Jul", @"Aug", @"Sep",
-//                //               @"Oct", @"Nov", @"Dec"
-//                ];
     [self setupBarLineChartView:barChartView];
     
     barChartView.delegate = self;
@@ -164,78 +165,6 @@
     
     //    [self handleOption:@"toggleValues" forChartView:barChartView];
 }
-//{
-//    CGSize screenSize = [UIScreen mainScreen].bounds.size;
-//    CGFloat maxSize = screenSize.width;
-//    if (maxSize > screenSize.height) {
-//        maxSize = screenSize.height;
-//    }
-//    
-//    //        self.barChart.frame = PNBarChart
-//    self.barChart = [[PNBarChart alloc] initWithFrame:CGRectMake(0, 0, maxSize, (maxSize-64))];
-//    self.barChart.backgroundColor = [UIColor clearColor];
-//    [barChartView addSubview:self.barChart];
-//    
-//    self.barChart.translatesAutoresizingMaskIntoConstraints = NO;
-//    
-//    NSLayoutConstraint *horizontalConstraint = [NSLayoutConstraint constraintWithItem:self.barChart attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:barChartView attribute:NSLayoutAttributeCenterX multiplier:1 constant:0];
-//    NSLayoutConstraint *verticalConstraint = [NSLayoutConstraint constraintWithItem:self.barChart attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:barChartView attribute:NSLayoutAttributeCenterY multiplier:1 constant:0];
-//    NSLayoutConstraint *widthConstraint = [NSLayoutConstraint constraintWithItem:self.barChart attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:maxSize];
-//    NSLayoutConstraint *heightConstraint = [NSLayoutConstraint constraintWithItem:self.barChart attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:(maxSize-64)/2];
-//    [barChartView addConstraints:@[horizontalConstraint, verticalConstraint, widthConstraint, heightConstraint]];
-//    
-//    static NSNumberFormatter *barChartFormatter;
-//    if (!barChartFormatter){
-//        barChartFormatter = [[NSNumberFormatter alloc] init];
-//        barChartFormatter.numberStyle = NSNumberFormatterCurrencyStyle;
-//        barChartFormatter.allowsFloats = NO;
-//        barChartFormatter.maximumFractionDigits = 0;
-//    }
-//    
-//    //        self.barChart.showLabel = NO;
-//    self.barChart.backgroundColor = [UIColor clearColor];
-//    self.barChart.yLabelFormatter = ^(CGFloat yValue){
-//        return [barChartFormatter stringFromNumber:[NSNumber numberWithFloat:yValue]];
-//    };
-//    
-//    self.barChart.yChartLabelWidth = 20.0;
-//    self.barChart.chartMarginLeft = 30.0;
-//    self.barChart.chartMarginRight = 10.0;
-//    self.barChart.chartMarginTop = 5.0;
-//    self.barChart.chartMarginBottom = 10.0;
-//    
-//    
-//    self.barChart.labelMarginTop = 5.0;
-//    self.barChart.showChartBorder = YES;
-//    [self.barChart setXLabels:@[@"2",@"3",@"4",@"5",@"2",@"3",@"4",@"5"]];
-//    //       self.barChart.yLabels = @[@-10,@0,@10];
-//    //        [self.barChart setYValues:@[@10000.0,@30000.0,@10000.0,@100000.0,@500000.0,@1000000.0,@1150000.0,@2150000.0]];
-//    [self.barChart setYValues:@[@10.82,@1.88,@6.96,@33.93,@10.82,@1.88,@6.96,@33.93]];
-//    [self.barChart setStrokeColors:@[PNGreen,PNGreen,PNRed,PNGreen,PNGreen,PNGreen,PNRed,PNGreen]];
-//    self.barChart.isGradientShow = NO;
-//    self.barChart.isShowNumbers = YES;
-//    
-//    [self.barChart strokeChart];
-//
-////    self.barChart.yChartLabelWidth = 20.0;
-////    self.barChart.chartMarginLeft = 30.0;
-////    self.barChart.chartMarginRight = 10.0;
-////    self.barChart.chartMarginTop = 5.0;
-////    self.barChart.chartMarginBottom = 10.0;
-////    self.barChart.yMaxValue = 20;
-////    self.barChart.labelMarginTop = 5.0;
-////    self.barChart.showChartBorder = YES;
-////    
-////    self.barChart.xLabels = (NSArray*)[results valueForKey:@"categoryTitle"];
-////    self.barChart.yValues = (NSArray*)[results valueForKey:@"totalCorrectAnswers"];
-//////    self.barChart.yValues = @[10.82,1.88,6.96,33.93,10.82,1.88,6.96,33.93,10.82,1.88,6.96,33.93,10.82,1.88,6.96,33.93];
-////    self.barChart.strokeColors = (NSArray*)[results valueForKey:@"bgColor"];//results.value(forKey: "bgColor") as! [UIColor]//[UIColor.green,UIColor.green,UIColor.red,UIColor.green,UIColor.green,UIColor.green,UIColor.red,UIColor.green,UIColor.green,UIColor.green,UIColor.red,UIColor.green,UIColor.green,UIColor.green,UIColor.red,UIColor.green]
-////    NSLog(@"%@  %@",self.barChart.xLabels, self.barChart.yValues);
-////    self.barChart.isGradientShow = NO;
-////    self.barChart.isShowNumbers = NO;
-////    [self.barChart strokeChart];
-//}
-
 
 #pragma mark - ChartView
 
@@ -257,6 +186,10 @@
     //        set.drawValuesEnabled = NO;
     //    }
     //    [barChartView setNeedsDisplay];
+    
+    if (_willSendResult) {
+        [self sendingResult];
+    }
     
 }
 - (void)setDataCount:(int)count range:(double)range {
@@ -315,7 +248,7 @@
     chartView.rightAxis.enabled = NO;
 }
 
-
+/*
 - (void)handleOption:(NSString *)key forChartView:(ChartViewBase *)chartView
 {
     if ([key isEqualToString:@"toggleValues"])
@@ -397,7 +330,7 @@
         [chartView setNeedsDisplay];
     }
 }
-
+*/
 #pragma mark - ChartViewDelegate
 
 - (void)chartValueSelected:(ChartViewBase * __nonnull)chartView entry:(ChartDataEntry * __nonnull)entry dataSetIndex:(NSInteger)dataSetIndex highlight:(ChartHighlight * __nonnull)highlight {

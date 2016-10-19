@@ -32,6 +32,7 @@ static UserObject *Shared = nil;
             if (dictionary[@"contact_number"]) {
                 _contactNumber = dictionary[@"contact_number"];
             }
+            _isAdmin = [dictionary[@"is_admin"] boolValue];
         }
     }
     return self;
@@ -45,6 +46,8 @@ static UserObject *Shared = nil;
         _firstName = [decoder decodeObjectForKey:@"first_name"];
         _email = [decoder decodeObjectForKey:@"email"];
         _contactNumber = [decoder decodeObjectForKey:@"contact_number"];
+        _isAdmin = [[decoder decodeObjectForKey:@"is_admin"] boolValue];
+
     }
     return self;
 }
@@ -56,6 +59,7 @@ static UserObject *Shared = nil;
     [aCoder encodeObject:_firstName forKey:@"first_name"];
     [aCoder encodeObject:_email forKey:@"email"];
     [aCoder encodeObject:_contactNumber forKey:@"contact_number"];
+    [aCoder encodeObject:@(_isAdmin) forKey:@"is_admin"];
 }
 
 - (void)saveUserToLocalWithInfo:(NSDictionary*)info {
@@ -66,6 +70,7 @@ static UserObject *Shared = nil;
     _email = user.email;
     _contactNumber = user.contactNumber;
     _testTakenCount = user.testTakenCount;
+    _isAdmin = user.isAdmin;
     
     NSData *encodedData = [NSKeyedArchiver archivedDataWithRootObject:self];
     [USERDEFAULTS setObject:encodedData forKey:kStringSavedUserKey];
@@ -81,6 +86,7 @@ static UserObject *Shared = nil;
     _email = user.email;
     _contactNumber = user.contactNumber;
     _testTakenCount = user.testTakenCount;
+    _isAdmin = user.isAdmin;
 }
 
 - (void)createContainerWithCentre:(UIViewController*)centreVC {

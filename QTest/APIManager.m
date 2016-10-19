@@ -10,6 +10,7 @@
 #import <AFNetworking/AFNetworking.h>
 #import <MBProgressHUD/MBProgressHUD.h>
 #import "Constants.h"
+#import "UserObject.h"
 
 #define BaseUrl @"http://aujamtanmeyah.org.sa/qtest/"
 #define SecurityCode @"api#100#qtest*786!#102"
@@ -61,5 +62,52 @@ static APIManager* sharedManger = nil;
         NSLog(@"Failure %@ : %@",urlString, error.localizedDescription);
     }];
 }
+
+- (void)sendResult:(UIImage*)image ForSuccess:(SuccessCompletionHandler)success ForFail:(FailureCompletionHandler)failure {
+    NSMutableDictionary *param = [NSMutableDictionary dictionary];
+    [param setValue:SecurityCode forKey:@"security_code"];
+    [param setValue:[UserObject sharedUser].userId forKey:@"user_id"];
+    
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:appDelegate.window animated:YES];
+    hud.mode = MBProgressHUDModeDeterminateHorizontalBar;
+
+    NSMutableURLRequest *request = [[AFHTTPRequestSerializer serializer] multipartFormRequestWithMethod:@"POST" URLString:[BaseUrl stringByAppendingString:@"resultemail"] parameters:param constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+        [formData appendPartWithFileData:UIImageJPEGRepresentation(image, 1.0) name:@"file" fileName:@"filename.jpg" mimeType:@"image/jpeg"];
+    } error:nil];
+    
+//    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+    
+    NSURLSessionUploadTask *uploadTask;
+    uploadTask = [manager
+                  uploadTaskWithStreamedRequest:request
+                  progress:^(NSProgress * _Nonnull uploadProgress) {
+                      // This is not called back on the main queue.
+                      // You are responsible for dispatching to the main queue for UI updates
+                      dispatch_async(dispatch_get_main_queue(), ^{
+                          //Update the progress view
+//                          [progressView setProgress:uploadProgress.fractionCompleted];
+                          hud.progress = uploadProgress.fractionCompleted;
+                      });
+                  }
+                  completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+                      if (error) {
+                          [hud hideAnimated:YES];
+                          failure(error.localizedDescription);
+                          NSLog(@"Failure %@", error.localizedDescription);
+                      } else {
+                          [hud hideAnimated:YES];
+                          if ([[responseObject valueForKey:@"success"] boolValue]) {
+                              success(responseObject);
+                          }
+                          else {
+                              failure([responseObject valueForKey:@"msg"]);
+                          }
+//                          NSLog(@"%@ %@", response, responseObject);
+                      }
+                  }];
+    
+    [uploadTask resume];
+}
+
 
 @end

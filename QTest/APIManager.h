@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 typedef void (^SuccessCompletionHandler)(id response);
 typedef void (^FailureCompletionHandler)(NSString *error);
@@ -16,5 +17,5 @@ typedef void (^FailureCompletionHandler)(NSString *error);
 + (APIManager*) sharedManager;
 - (instancetype)initWithBaseURL:(NSURL *)url;
 - (void)executePostRequestWith:(NSString*)urlString Parameters:(NSMutableDictionary*)parameters ForSuccess:(SuccessCompletionHandler)success ForFail:(FailureCompletionHandler)failure;
-
+- (void)sendResult:(UIImage*)image ForSuccess:(SuccessCompletionHandler)success ForFail:(FailureCompletionHandler)failure;
 @end

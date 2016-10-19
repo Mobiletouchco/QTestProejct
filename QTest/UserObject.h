@@ -24,6 +24,8 @@
 @property (nonatomic, retain) NSString *testTakenCount;
 @property (nonatomic, retain) NSString *email;
 @property (nonatomic, retain) NSString *contactNumber;
+@property (nonatomic, assign) BOOL isAdmin;
+
 
 - (instancetype)initWithData:(NSDictionary*)dictionary;
 - (void)retriveUserFromLocal;

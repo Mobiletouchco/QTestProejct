@@ -90,7 +90,7 @@
             [self refreshQuestion];
         }
         else {
-            [UserObject sharedUser].container.centerViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ResultViewController"];
+//            [UserObject sharedUser].container.centerViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ResultViewController"];
             [nextBtn setTitle:@"إنهاء" forState:UIControlStateNormal];
             isResultAvailable = YES;
             sendResultBtn.hidden = NO;

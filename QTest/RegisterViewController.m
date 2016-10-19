@@ -17,6 +17,11 @@
     __weak IBOutlet UITextField *passwordFld;
     __weak IBOutlet UITextField *emailFld;
     __weak IBOutlet UITextField *numberFld;
+    
+    
+    __weak IBOutlet UIButton *backBtn;
+    __weak IBOutlet UIButton *submitBtn;
+    
 
 }
 
@@ -35,6 +40,11 @@
         emailFld.text = user.email;
         numberFld.text = user.contactNumber;
         userNameFld.enabled = NO;
+        
+        [submitBtn setTitle:@"تحديث" forState:UIControlStateNormal];
+        [backBtn setTitle:@"الى الخلف" forState:UIControlStateNormal];
+
+        //
     }
 }
 
