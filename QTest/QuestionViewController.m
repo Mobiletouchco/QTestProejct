@@ -10,6 +10,9 @@
 #import "UserObject.h"
 #import "APIManager.h"
 #import <TSMessages/TSMessage.h>
+#import "ResultViewController.h"
+
+#define TotalQuestion 90
 
 @interface QuestionViewController () {
     
@@ -18,10 +21,11 @@
     __weak IBOutlet UIButton *nextBtn;
     __weak IBOutlet UILabel *quesLbl;
     __weak IBOutlet UIProgressView *progressBar;
-    
+    __weak IBOutlet UIButton *sendResultBtn;
+
     NSUInteger index;
     Question *currentQues;
-
+    BOOL isResultAvailable;
 
 }
 
@@ -87,6 +91,9 @@
         }
         else {
             [UserObject sharedUser].container.centerViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ResultViewController"];
+            [nextBtn setTitle:@"إنهاء" forState:UIControlStateNormal];
+            isResultAvailable = YES;
+            sendResultBtn.hidden = NO;
         }
     } ForFail:^(NSString *error) {
         [TSMessage showNotificationWithTitle:error type:TSMessageNotificationTypeError];
@@ -100,7 +107,7 @@
     index += 1;
     nextBtn.backgroundColor = DisableAppearanceColor;
     nextBtn.enabled = NO;
-    float result = (float)index / 90;
+    float result = (float)index / TotalQuestion;
     progressBar.progress = result;
 }
 
@@ -120,8 +127,15 @@
 
 }
 - (IBAction)nextAct:(UIButton*)sender {
-//    index = 90;
-    [self requestForQuestion];
+    index = TotalQuestion;
+    if (isResultAvailable) {
+        ResultViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"ResultViewController"];
+        vc.willSendResult = [@(sender.tag) boolValue];
+        [UserObject sharedUser].container.centerViewController = vc;
+    }
+    else {
+        [self requestForQuestion];
+    }
 }
 
 @end

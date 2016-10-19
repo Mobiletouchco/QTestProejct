@@ -24,6 +24,7 @@
 		353ED27A1DB6631E00CEDB4F /* MenuItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 353ED2791DB6631E00CEDB4F /* MenuItemsViewController.m */; };
 		663615E45F695A150EA332B5 /* Pods_QTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00842FA5ADC0AF20966DA874 /* Pods_QTest.framework */; };
 		B045CE511DB740E500ED1D07 /* ForgetPassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B045CE501DB740E500ED1D07 /* ForgetPassViewController.m */; };
+		B045CE541DB790E000ED1D07 /* AdminViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B045CE531DB790E000ED1D07 /* AdminViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +62,8 @@
 		9867F28AFA7D2791BD3BAC21 /* Pods-QTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QTest.release.xcconfig"; path = "Pods/Target Support Files/Pods-QTest/Pods-QTest.release.xcconfig"; sourceTree = "<group>"; };
 		B045CE4F1DB740E500ED1D07 /* ForgetPassViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgetPassViewController.h; sourceTree = "<group>"; };
 		B045CE501DB740E500ED1D07 /* ForgetPassViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgetPassViewController.m; sourceTree = "<group>"; };
+		B045CE521DB790E000ED1D07 /* AdminViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdminViewController.h; sourceTree = "<group>"; };
+		B045CE531DB790E000ED1D07 /* AdminViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdminViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +156,8 @@
 				353ED2791DB6631E00CEDB4F /* MenuItemsViewController.m */,
 				B045CE4F1DB740E500ED1D07 /* ForgetPassViewController.h */,
 				B045CE501DB740E500ED1D07 /* ForgetPassViewController.m */,
+				B045CE521DB790E000ED1D07 /* AdminViewController.h */,
+				B045CE531DB790E000ED1D07 /* AdminViewController.m */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -302,6 +307,7 @@
 				353ED2741DB6616A00CEDB4F /* ResultViewController.m in Sources */,
 				353ED2681DB6612800CEDB4F /* RegisterViewController.m in Sources */,
 				353ED27A1DB6631E00CEDB4F /* MenuItemsViewController.m in Sources */,
+				B045CE541DB790E000ED1D07 /* AdminViewController.m in Sources */,
 				353ED26E1DB6614800CEDB4F /* QuestionViewController.m in Sources */,
 				353ED2771DB6617B00CEDB4F /* LunchScreenController.m in Sources */,
 				353ED26B1DB6613700CEDB4F /* WelcomeViewController.m in Sources */,

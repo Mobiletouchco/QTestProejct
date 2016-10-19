@@ -10,4 +10,6 @@
 
 @interface ResultViewController : UIViewController
 
+@property (nonatomic, assign) BOOL willSendResult;
+
 @end
