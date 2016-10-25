@@ -7,6 +7,7 @@
 //
 
 #import "UserObject.h"
+#import "MenuItemsViewController.h"
 
 static UserObject *Shared = nil;
 
@@ -89,9 +90,9 @@ static UserObject *Shared = nil;
 }
 
 - (void)createContainerWithCentre:(UIViewController*)centreVC {
-//    _container = [MFSideMenuContainerViewController containerWithCenterViewController:centreVC leftMenuViewController:nil rightMenuViewController:MenuItemsViewController.new];
-//    _container.panMode = MFSideMenuPanModeNone;
-//    _container.navigationItem.hidesBackButton = YES;
+    _container = [MFSideMenuContainerViewController containerWithCenterViewController:centreVC leftMenuViewController:nil rightMenuViewController:MenuItemsViewController.new];
+    _container.panMode = MFSideMenuPanModeNone;
+    _container.navigationItem.hidesBackButton = YES;
 }
 
 + (BOOL)isValidEmail:(NSString*)email {
