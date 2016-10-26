@@ -17,6 +17,14 @@
 		353ED2621DB660FE00CEDB4F /* APIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 353ED2611DB660FE00CEDB4F /* APIManager.m */; };
 		353ED2771DB6617B00CEDB4F /* LunchScreenController.m in Sources */ = {isa = PBXBuildFile; fileRef = 353ED2761DB6617B00CEDB4F /* LunchScreenController.m */; };
 		663615E45F695A150EA332B5 /* Pods_QTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00842FA5ADC0AF20966DA874 /* Pods_QTest.framework */; };
+		B04368C01DC0BA1B00207063 /* AdminViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B04368B11DC0BA1B00207063 /* AdminViewController.m */; };
+		B04368C11DC0BA1B00207063 /* ForgetPassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B04368B31DC0BA1B00207063 /* ForgetPassViewController.m */; };
+		B04368C21DC0BA1B00207063 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B04368B51DC0BA1B00207063 /* LoginViewController.m */; };
+		B04368C31DC0BA1B00207063 /* MenuItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B04368B71DC0BA1B00207063 /* MenuItemsViewController.m */; };
+		B04368C41DC0BA1B00207063 /* QuestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B04368B91DC0BA1B00207063 /* QuestionViewController.m */; };
+		B04368C51DC0BA1B00207063 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B04368BB1DC0BA1B00207063 /* RegisterViewController.m */; };
+		B04368C61DC0BA1B00207063 /* ResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B04368BD1DC0BA1B00207063 /* ResultViewController.m */; };
+		B04368C71DC0BA1B00207063 /* WelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B04368BF1DC0BA1B00207063 /* WelcomeViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +48,22 @@
 		353ED2761DB6617B00CEDB4F /* LunchScreenController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LunchScreenController.m; sourceTree = "<group>"; };
 		97F0A011F4418B6C4D5007AA /* Pods-QTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QTest.debug.xcconfig"; path = "Pods/Target Support Files/Pods-QTest/Pods-QTest.debug.xcconfig"; sourceTree = "<group>"; };
 		9867F28AFA7D2791BD3BAC21 /* Pods-QTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QTest.release.xcconfig"; path = "Pods/Target Support Files/Pods-QTest/Pods-QTest.release.xcconfig"; sourceTree = "<group>"; };
+		B04368B01DC0BA1B00207063 /* AdminViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdminViewController.h; sourceTree = "<group>"; };
+		B04368B11DC0BA1B00207063 /* AdminViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdminViewController.m; sourceTree = "<group>"; };
+		B04368B21DC0BA1B00207063 /* ForgetPassViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgetPassViewController.h; sourceTree = "<group>"; };
+		B04368B31DC0BA1B00207063 /* ForgetPassViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgetPassViewController.m; sourceTree = "<group>"; };
+		B04368B41DC0BA1B00207063 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		B04368B51DC0BA1B00207063 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		B04368B61DC0BA1B00207063 /* MenuItemsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuItemsViewController.h; sourceTree = "<group>"; };
+		B04368B71DC0BA1B00207063 /* MenuItemsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuItemsViewController.m; sourceTree = "<group>"; };
+		B04368B81DC0BA1B00207063 /* QuestionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionViewController.h; sourceTree = "<group>"; };
+		B04368B91DC0BA1B00207063 /* QuestionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionViewController.m; sourceTree = "<group>"; };
+		B04368BA1DC0BA1B00207063 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
+		B04368BB1DC0BA1B00207063 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
+		B04368BC1DC0BA1B00207063 /* ResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultViewController.h; sourceTree = "<group>"; };
+		B04368BD1DC0BA1B00207063 /* ResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultViewController.m; sourceTree = "<group>"; };
+		B04368BE1DC0BA1B00207063 /* WelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeViewController.h; sourceTree = "<group>"; };
+		B04368BF1DC0BA1B00207063 /* WelcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomeViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +140,22 @@
 		353ED2571DB6604200CEDB4F /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				B04368B01DC0BA1B00207063 /* AdminViewController.h */,
+				B04368B11DC0BA1B00207063 /* AdminViewController.m */,
+				B04368B21DC0BA1B00207063 /* ForgetPassViewController.h */,
+				B04368B31DC0BA1B00207063 /* ForgetPassViewController.m */,
+				B04368B41DC0BA1B00207063 /* LoginViewController.h */,
+				B04368B51DC0BA1B00207063 /* LoginViewController.m */,
+				B04368B61DC0BA1B00207063 /* MenuItemsViewController.h */,
+				B04368B71DC0BA1B00207063 /* MenuItemsViewController.m */,
+				B04368B81DC0BA1B00207063 /* QuestionViewController.h */,
+				B04368B91DC0BA1B00207063 /* QuestionViewController.m */,
+				B04368BA1DC0BA1B00207063 /* RegisterViewController.h */,
+				B04368BB1DC0BA1B00207063 /* RegisterViewController.m */,
+				B04368BC1DC0BA1B00207063 /* ResultViewController.h */,
+				B04368BD1DC0BA1B00207063 /* ResultViewController.m */,
+				B04368BE1DC0BA1B00207063 /* WelcomeViewController.h */,
+				B04368BF1DC0BA1B00207063 /* WelcomeViewController.m */,
 				353ED2751DB6617B00CEDB4F /* LunchScreenController.h */,
 				353ED2761DB6617B00CEDB4F /* LunchScreenController.m */,
 			);
@@ -260,11 +300,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				353ED2451DB6602B00CEDB4F /* AppDelegate.m in Sources */,
+				B04368C01DC0BA1B00207063 /* AdminViewController.m in Sources */,
+				B04368C11DC0BA1B00207063 /* ForgetPassViewController.m in Sources */,
 				353ED25B1DB6608400CEDB4F /* UserObject.m in Sources */,
 				353ED2421DB6602B00CEDB4F /* main.m in Sources */,
+				B04368C71DC0BA1B00207063 /* WelcomeViewController.m in Sources */,
+				B04368C21DC0BA1B00207063 /* LoginViewController.m in Sources */,
+				B04368C41DC0BA1B00207063 /* QuestionViewController.m in Sources */,
+				B04368C51DC0BA1B00207063 /* RegisterViewController.m in Sources */,
+				B04368C31DC0BA1B00207063 /* MenuItemsViewController.m in Sources */,
 				353ED2771DB6617B00CEDB4F /* LunchScreenController.m in Sources */,
 				353ED25F1DB660DD00CEDB4F /* UIView+XibConfiguration.m in Sources */,
 				353ED2621DB660FE00CEDB4F /* APIManager.m in Sources */,
+				B04368C61DC0BA1B00207063 /* ResultViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
